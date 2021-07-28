@@ -1,3 +1,10 @@
+" Setup Plug if not present
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall | source ~/.config/nvim/init.vim
+endif 
+
 " Plugins
 call plug#begin("~/.vim/plugged")
 
@@ -29,6 +36,9 @@ call plug#begin("~/.vim/plugged")
 	" Prettier
 	Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
+	" Start screen
+	Plug 'mhinz/vim-startify'
+
 call plug#end()
 
 
@@ -40,7 +50,6 @@ colorscheme onehalfdark
 
 let g:airline_theme='onehalfdark'
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
 
 set shiftwidth=4
 set tabstop=4
@@ -48,6 +57,13 @@ set autoindent
 set incsearch
 set showcmd
 set relativenumber
+set showmatch					" Show matching brackets
+set nowrap
+set nobackup                    " No need for backups.
+set nowb                        " No autobackup.
+set noswapfile                  " No swap.
+set clipboard+=unnamed          " Yank and paste with system clipboard.
+filetype plugin indent on
 
 let g:auto_save_silent = 1
 let g:auto_save = 1  " enable AutoSave on Vim startup
@@ -56,7 +72,7 @@ let mapleader=" "
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>o <cmd>Telescope find_files<cr>
-" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+" " nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>b <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
@@ -81,7 +97,7 @@ noremap <silent> <leader>ft :NERDTreeToggle<CR>
 " " Close window if NERDTree is the last one
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " " Map to open current file in NERDTree and set size
-nnoremap <leader>sf :NERDTreeFind<bar> :vertical resize 45<CR>
+nnoremap <leader>sf :NERDTreeFind<bar> :vertical resize 30<CR>
 
 " NERDTree Syntax Highlight
 
@@ -139,3 +155,8 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
+nnoremap ^ 0
+if has('nvim')
+    set termguicolors
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
