@@ -1,0 +1,107 @@
+:root {
+  --brand-light: hsl(0, 0%, 0%);
+  --brand-dark: hsl(0, 30%, 50%);
+  --brand: var(--brand-light);
+  --txt-100: #4d4d4d;
+  --txt-200: #333333;
+  --txt-300: #1a1a1a;
+  --surface-100: whitesmoke;
+  --surface-200: #ebebeb;
+  --surface-300: #e0e0e0;
+  --fs-100: 0.707rem;
+  --fs-200: 1rem;
+  --fs-300: 1.414rem;
+  --fs-400: 2rem;
+  --fs-500: 2.8rem;
+  --fs-600: 4rem;
+  --fs-700: 5.653rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+*::before,
+*::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+small,
+.text_small {
+  font-size: var(--fs-100);
+}
+
+[class*=btn],
+button {
+  display: flex;
+  align-items: center;
+}
+
+[class*=btn],
+button {
+  line-height: 0;
+  cursor: pointer;
+}
+[class*=btn] svg,
+button svg {
+  margin-left: 5px;
+}
+
+svg {
+  stroke: currentColor;
+}

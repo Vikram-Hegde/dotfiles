@@ -1,0 +1,87 @@
+$colors: (
+  light: (
+    txt: (
+      100: hsl(0 0% 30%),
+      200: hsl(0 0% 20%),
+      300: hsl(0 0% 10%),
+    ),
+    surface: (
+      100: hsl(0 0% 96%),
+      200: hsl(0 0% 92%),
+      300: hsl(0 0% 88%),
+    ),
+  ),
+  dark: (
+    txt: (
+      100: hsl(0 0% 96%),
+      200: hsl(0 0% 92%),
+      300: hsl(0 0% 88%),
+    ),
+    surface: (
+      100: hsl(0 0% 30%),
+      200: hsl(0 0% 20%),
+      300: hsl(0 0% 10%),
+    ),
+  ),
+);
+
+$font-size: (
+  100: 0.707rem,
+  200: 1rem,
+  300: 1.414rem,
+  400: 2rem,
+  500: 2.8rem,
+  600: 4rem,
+  700: 5.653rem,
+);
+
+$utilities: (
+  font-size: (
+    100: 0.707rem,
+    200: 1rem,
+    300: 1.414rem,
+    400: 2rem,
+    500: 2.8rem,
+    600: 4rem,
+    700: 5.653rem,
+  ),
+  spacing: (
+    100: 0.295rem,
+    200: 0.478rem,
+    300: 0.773rem,
+    400: 1.25rem,
+    500: 2.023rem,
+    600: 3.273rem,
+    700: 5.295rem,
+    800: 8.568rem,
+    900: 13.85rem,
+  ),
+);
+@mixin color-scheme($type: light) {
+  --brand: var(--brand-#{$type});
+  @each $prop, $value in map-get($colors, $type) {
+    @each $shade, $val in $value {
+      --#{$prop}-#{$shade}: #{$val};
+    }
+  }
+}
+
+@mixin utilities($type) {
+  $name: util;
+  @if $type == font-size {
+    $name: 'fs';
+  }
+  @if $type == spacing {
+    $name: 'sp';
+  }
+  @each $prop, $value in map-get($utilities, $type) {
+    --#{$name}-#{$prop}: #{$value};
+  }
+}
+
+:root {
+  --brand-light: hsl(0, 0%, 0%);
+  --brand-dark: hsl(0, 30%, 50%);
+  @include color-scheme();
+  @include utilities(font-size);
+}
