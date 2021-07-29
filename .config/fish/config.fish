@@ -1,12 +1,8 @@
 fish_vi_key_bindings
 
-function fish_greeting
-end
+# function fish_greeting
+# end
 
-# To just rerun your last command, simply type '!!'
-# '!! sudo' will prepend sudo to your most recent command
-# Running !! with anything other than sudo will append the argument to your most recent command
-# To add another command to prepend list remove the # on line 10 and put the command in the quotes. Repeat as needed
 function !!;
   set var (history | head -n 1)
   if test $argv
