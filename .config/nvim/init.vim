@@ -12,7 +12,7 @@ call plug#begin("~/.vim/plugged")
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 	" Looks and Feel
-	Plug 'sonph/onehalf', { 'rtp': 'vim' }
+  	Plug 'dikiaap/minimalist'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 
@@ -27,7 +27,6 @@ call plug#begin("~/.vim/plugged")
 	" NerdTree
 	Plug 'preservim/nerdtree'
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-	Plug 'Xuyuanp/nerdtree-git-plugin' 
 	Plug 'ryanoasis/vim-devicons'
 
 	" Auto Pair
@@ -45,21 +44,31 @@ call plug#begin("~/.vim/plugged")
 	" FloatTerm
 	Plug 'voldikss/vim-floaterm'
 
+	" Prettier
+	Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+
 call plug#end()
 
 
 " Config Section
+
 syntax enable
 set cursorline
-colorscheme onehalfdark
+colorscheme minimalist
 
-let g:airline_theme='onehalfdark'
+" Airline Config
+let g:airline_theme='minimalist'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_skip_empty_sections = 1
 
 set shiftwidth=4
 set tabstop=4
 set autoindent
+set smartindent
 set incsearch
+set nohlsearch
+set ignorecase
 set showcmd
 set relativenumber
 set showmatch					" Show matching brackets
@@ -71,32 +80,38 @@ set noswapfile                  " No swap.
 set clipboard+=unnamed          " Yank and paste with system clipboard.
 filetype plugin indent on
 
+" Auto Save Config
 let g:auto_save_silent = 1
 let g:auto_save = 1  " enable AutoSave on Vim startup
 
 let mapleader=" "
 
-" Find files using Telescope command-line sugar.
+" Find files using Telescope
 nnoremap <leader>o <cmd>Telescope find_files<cr>
-" " nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>b <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Back to Home Page
+nnoremap <leader>h :SClose<cr>
 
 " Switch between buffers easily
 nnoremap <tab> :w <bar> :bnext<cr>
 nnoremap <S-tab> :w <bar> :bprevious<cr>
 
 " Moving around split windows
-nnoremap <leader>k <C-w>k 
-nnoremap <leader>j <C-w>j 
-nnoremap <leader>h <C-w>h 
-nnoremap <leader>l <C-w>l 
+nnoremap <C-k> <C-w>k 
+nnoremap <C-j> <C-w>j 
+nnoremap <C-h> <C-w>h 
+nnoremap <C-l> <C-w>l 
+
 " Closing window
-nnoremap <leader>q <C-w>q
+nnoremap <C-q> <C-w>q
 
 " Install Plugins
 nnoremap <leader>% :source %<cr>
-nnoremap <leader>pi :PlugInstall<cr>
+" nnoremap <leader>pi :PlugInstall<cr>
+" nnoremap <leader>pc :PlugClean<cr>
+
 
 " FloatTerm config
 let g:floaterm_keymap_new = '<Leader>tn'
@@ -106,14 +121,15 @@ let g:floaterm_height = 0.3
 let g:floaterm_autoclose = 1
 
 " NERDTree
+
 let g:NERDTreeShowHidden = 1 
 let g:NERDTreeMinimalUI = 1 " hide helper
 let g:NERDTreeIgnore = ['^node_modules$'] " ignore node_modules to increase load speed 
-" " Toggle
+" Toggle
 noremap <silent> <leader>ft :NERDTreeToggle<CR>
-" " Close window if NERDTree is the last one
+" Close window if NERDTree is the last one
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" " Map to open current file in NERDTree and set size
+" Map to open current file in NERDTree and set size
 nnoremap <leader>sf :NERDTreeFind<bar> :vertical resize 30<CR>
 
 " NERDTree Syntax Highlight
@@ -141,53 +157,32 @@ let s:lightGreen = "31B53E"
 let s:white = "FFFFFF"
 let s:rspec_red = 'FE405F'
 let s:git_orange = 'F54D27'
-" " This line is needed to avoid error
+" This line is needed to avoid error
 let g:NERDTreeExtensionHighlightColor = {} 
-" " Sets the color of css files to blue
+" Sets the color of css files to blue
 let g:NERDTreeExtensionHighlightColor['css'] = s:blue 
-" " This line is needed to avoid error
+" This line is needed to avoid error
 let g:NERDTreeExactMatchHighlightColor = {} 
-" " Sets the color for .gitignore files
+" Sets the color for .gitignore files
 let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange 
-" " This line is needed to avoid error
+" This line is needed to avoid error
 let g:NERDTreePatternMatchHighlightColor = {} 
-" " Sets the color for files ending with _spec.rb
+" Sets the color for files ending with _spec.rb
 let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red 
-" " Sets the color for folders that did not match any rule
+" Sets the color for folders that did not match any rule
 let g:WebDevIconsDefaultFolderSymbolColor = s:beige 
-" " Sets the color for files that did not match any rule
+" Sets the color for files that did not match any rule
 let g:WebDevIconsDefaultFileSymbolColor = s:blue 
 
-" NERDTree Git Plugin
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
-
 nnoremap ^ 0
+
 if has('nvim')
     set termguicolors
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
-
-" Set internal encoding of vim, not needed on neovim, since coc.nvim using some
-" unicode characters in the file autoload/float.vim
-set encoding=utf-8
-
 " TextEdit might fail if hidden is not set.
 set hidden
-
-" Give more space for displaying messages.
-set cmdheight=2
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -261,10 +256,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
@@ -318,34 +309,13 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" Mappings for CoCList
-" Show all diagnostics.
-" ''nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-" nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-
-" Show commands.
-" nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-
 " Find symbol of current document.
-" nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-" nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-" nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-" nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <leader>O  :<C-u>CocList outline<cr>
 
 autocmd FileType javascript nnoremap <buffer> <leader>c :FloatermNew node %<CR>
 autocmd FileType c nnoremap <buffer> <leader>c :FloatermNew gcc % && ./a.out <CR>
-" autocmd FileType cpp nnoremap <buffer> <leader>c :FloatermNew g++ % && ./a.out <CR>
 autocmd FileType python nnoremap <buffer> <leader>c :FloatermNew python3 %<CR>
+autocmd FileType cpp nnoremap <buffer> <leader>c :FloatermNew --autoclose=0 g++ % && ./a.out && rm ./a.out<CR>
+autocmd FileType html nnoremap <buffer> <leader>c :FloatermNew live-server ./ <cr>
 
-autocmd FileType cpp nnoremap <buffer> <leader>c :FloatermNew --autoclose=0 g++ % && ./a.out<CR>
+autocmd BufEnter * silent! lcd %:p:h " Used to open terminal in the current working directory
