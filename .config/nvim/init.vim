@@ -47,6 +47,9 @@ call plug#begin("~/.vim/plugged")
 	" Prettier
 	Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
+	" Markdown Preview
+	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
 call plug#end()
 
 
@@ -83,6 +86,11 @@ filetype plugin indent on
 " Auto Save Config
 let g:auto_save_silent = 1
 let g:auto_save = 1  " enable AutoSave on Vim startup
+
+" Markdown Config
+let g:mkdp_refresh_slow = 1
+nnoremap <leader>mp <Plug>MarkdownPreview
+nnoremap <leader>mP <Plug>MarkdownPreviewStop
 
 let mapleader=" "
 
