@@ -1,5 +1,5 @@
 fish_vi_key_bindings
-
+set -gx EDITOR nvim
 # function fish_greeting
 # end
 

@@ -5,16 +5,18 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall | source ~/.config/nvim/init.vim
 endif 
 
-" Plugins
 call plug#begin("~/.vim/plugged")
 
 	" Code Completion
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 	" Looks and Feel
-  	Plug 'dikiaap/minimalist'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
+	Plug 'dikiaap/minimalist'
+	Plug 'ajmwagar/vim-deus'
+	Plug 'whatyouhide/vim-gotham'
+	Plug 'joshdick/onedark.vim'
 
 	" Telescope
 	Plug 'nvim-lua/popup.nvim'
@@ -50,20 +52,47 @@ call plug#begin("~/.vim/plugged")
 	" Markdown Preview
 	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
+	" Comments
+	Plug 'tpope/vim-commentary'
+	
+	" Match Tags
+	Plug 'gregsexton/MatchTag'
+
+	" Zen mode
+	Plug 'junegunn/goyo.vim'
+
 call plug#end()
 
-
 " Config Section
-
-syntax enable
+syntax on
 set cursorline
-colorscheme minimalist
+colorscheme onedark
+
+" Change Themes
+nnoremap <F1> :colorscheme minimalist <bar> :AirlineTheme minimalist <CR>
+nnoremap <F2> :colorscheme deus <bar> :AirlineTheme deus <CR>
+nnoremap <F3> :colorscheme onedark <bar> :AirlineTheme onedark <CR>
+nnoremap <F4> :colorscheme gotham <bar> :AirlineTheme gotham <CR>
+
+" Move Lines
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " Airline Config
-let g:airline_theme='minimalist'
+let g:airline_theme='onedark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_skip_empty_sections = 1
+let g:airline_section_b = '%-0.12{getcwd()}'
+let g:airline_section_c = '%t'
+let g:airline_section_c = '%t'
+let g:airline_detect_modified=1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#whitespace#enabled = 0
 
 set shiftwidth=4
 set tabstop=4
@@ -73,7 +102,7 @@ set incsearch
 set nohlsearch
 set ignorecase
 set showcmd
-set relativenumber
+set relativenumber number
 set showmatch					" Show matching brackets
 set nowrap
 set nobackup                    " No need for backups.
@@ -86,18 +115,25 @@ filetype plugin indent on
 " Auto Save Config
 let g:auto_save_silent = 1
 let g:auto_save = 1  " enable AutoSave on Vim startup
-
-" Markdown Config
-let g:mkdp_refresh_slow = 1
-nnoremap <leader>mp <Plug>MarkdownPreview
-nnoremap <leader>mP <Plug>MarkdownPreviewStop
+let g:startify_change_to_vcs_root = 1
+let g:startify_change_to_dir = 1
 
 let mapleader=" "
+
+nnoremap <C-z> <nop>
+
+" Comment Lines
+nmap <leader>/ gcc 
+
+" Set Current Working directory to the parent directory of file
+nnoremap <leader>cd :lcd %:h<CR>
+nnoremap <leader>du :cd ..<CR>
 
 " Find files using Telescope
 nnoremap <leader>o <cmd>Telescope find_files<cr>
 nnoremap <leader>b <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 
 " Back to Home Page
 nnoremap <leader>h :SClose<cr>
@@ -107,27 +143,32 @@ nnoremap <tab> :w <bar> :bnext<cr>
 nnoremap <S-tab> :w <bar> :bprevious<cr>
 
 " Moving around split windows
-nnoremap <C-k> <C-w>k 
-nnoremap <C-j> <C-w>j 
-nnoremap <C-h> <C-w>h 
-nnoremap <C-l> <C-w>l 
+nnoremap <silent> <C-k> :wincmd k<CR> 
+nnoremap <silent> <C-j> :wincmd j<CR> 
+nnoremap <silent> <C-h> :wincmd h<CR> 
+nnoremap <silent> <C-l> :wincmd l<CR> 
 
-" Closing window
-nnoremap <C-q> <C-w>q
+" Close buffer
+nnoremap <C-q> :bd<CR>
+
+" Markdown Config
+let g:mkdp_refresh_slow = 1
+autocmd FileType markdown nnoremap <buffer> <leader>c :MarkdownPreviewToggle<CR>
 
 " Install Plugins
-nnoremap <leader>% :source %<cr>
+nnoremap <leader>% :so %<cr>
 " nnoremap <leader>pi :PlugInstall<cr>
 " nnoremap <leader>pc :PlugClean<cr>
 
+nnoremap <leader>rem :%s#\(\d\+\)px#\=printf("%.2f", (submatch(1) / 16.0))."rem"#g<CR>
 
 " FloatTerm config
-let g:floaterm_keymap_new = '<Leader>tn'
+let g:floaterm_keymap_new = '<leader>tn'
 let g:floaterm_keymap_toggle = '<leader>tt'
 let g:floaterm_wintype = 'split'
 let g:floaterm_height = 0.3
 let g:floaterm_autoclose = 1
-
+" nnoremap <leader>tn :FloatermNew! cd %:p:h<CR>
 " NERDTree
 
 let g:NERDTreeShowHidden = 1 
@@ -185,16 +226,17 @@ let g:WebDevIconsDefaultFileSymbolColor = s:blue
 nnoremap ^ 0
 
 if has('nvim')
-    set termguicolors
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+	set termguicolors
+	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
 " TextEdit might fail if hidden is not set.
 set hidden
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=500
+" set updatetime=500
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
@@ -212,9 +254,9 @@ endif
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+	  \ pumvisible() ? "\<C-n>" :
+	  \ <SID>check_back_space() ? "\<TAB>" :
+	  \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
@@ -232,7 +274,7 @@ endif
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+							  \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -250,11 +292,11 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
+	execute 'h '.expand('<cword>')
   elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
+	call CocActionAsync('doHover')
   else
-    execute '!' . &keywordprg . " " . expand('<cword>')
+	execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
 
@@ -324,6 +366,4 @@ autocmd FileType javascript nnoremap <buffer> <leader>c :FloatermNew node %<CR>
 autocmd FileType c nnoremap <buffer> <leader>c :FloatermNew gcc % && ./a.out <CR>
 autocmd FileType python nnoremap <buffer> <leader>c :FloatermNew python3 %<CR>
 autocmd FileType cpp nnoremap <buffer> <leader>c :FloatermNew --autoclose=0 g++ % && ./a.out && rm ./a.out<CR>
-autocmd FileType html nnoremap <buffer> <leader>c :FloatermNew live-server ./ <cr>
-
-autocmd BufEnter * silent! lcd %:p:h " Used to open terminal in the current working directory
+autocmd FileType html nnoremap <buffer> <leader>c :FloatermNew live-server<CR>
