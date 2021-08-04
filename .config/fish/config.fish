@@ -1,7 +1,4 @@
 fish_vi_key_bindings
-set -gx EDITOR nvim
-# function fish_greeting
-# end
 
 function !!;
   set var (history | head -n 1)

@@ -14,9 +14,8 @@ call plug#begin("~/.vim/plugged")
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'dikiaap/minimalist'
-	Plug 'ajmwagar/vim-deus'
-	Plug 'whatyouhide/vim-gotham'
 	Plug 'joshdick/onedark.vim'
+	Plug 'morhetz/gruvbox'
 
 	" Telescope
 	Plug 'nvim-lua/popup.nvim'
@@ -66,13 +65,13 @@ call plug#end()
 " Config Section
 syntax on
 set cursorline
+set background=dark
 colorscheme onedark
 
 " Change Themes
 nnoremap <F1> :colorscheme minimalist <bar> :AirlineTheme minimalist <CR>
-nnoremap <F2> :colorscheme deus <bar> :AirlineTheme deus <CR>
-nnoremap <F3> :colorscheme onedark <bar> :AirlineTheme onedark <CR>
-nnoremap <F4> :colorscheme gotham <bar> :AirlineTheme gotham <CR>
+nnoremap <F2> :colorscheme onedark <bar> :AirlineTheme onedark <CR>
+nnoremap <F3> :colorscheme gruvbox <bar> :AirlineTheme gruvbox <CR>
 
 " Move Lines
 nnoremap <A-j> :m .+1<CR>==
@@ -84,6 +83,7 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " Airline Config
 let g:airline_theme='onedark'
+let g:gruvbox_contrast_dark='medium'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_skip_empty_sections = 1
@@ -96,6 +96,8 @@ let g:airline#extensions#whitespace#enabled = 0
 
 set shiftwidth=4
 set tabstop=4
+set softtabstop=4
+set expandtab
 set autoindent
 set smartindent
 set incsearch
