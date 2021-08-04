@@ -1,5 +1,7 @@
 fish_vi_key_bindings
 
+set fish_greeting
+
 function !!;
   set var (history | head -n 1)
   if test $argv

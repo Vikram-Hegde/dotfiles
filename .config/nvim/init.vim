@@ -170,9 +170,11 @@ let g:floaterm_keymap_toggle = '<leader>tt'
 let g:floaterm_wintype = 'split'
 let g:floaterm_height = 0.3
 let g:floaterm_autoclose = 1
-" nnoremap <leader>tn :FloatermNew! cd %:p:h<CR>
-" NERDTree
 
+nnoremap <leader>tj :FloatermPrev<CR>
+nnoremap <leader>tk :FloatermNext<CR>
+
+" NERDTree
 let g:NERDTreeShowHidden = 1 
 let g:NERDTreeMinimalUI = 1 " hide helper
 let g:NERDTreeIgnore = ['^node_modules$'] " ignore node_modules to increase load speed 
