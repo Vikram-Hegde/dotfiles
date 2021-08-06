@@ -1,64 +1,70 @@
-" Setup Plug if not present
+"Setup Plug if not present
 if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall | source ~/.config/nvim/init.vim
+  autocmd VimEnter * PlugInstall | source ~/.config/nvim/init.vim
 endif 
 
 call plug#begin("~/.vim/plugged")
 
-	" Code Completion
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " Code Completion
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-	" Looks and Feel
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
-	Plug 'dikiaap/minimalist'
-	Plug 'joshdick/onedark.vim'
-	Plug 'morhetz/gruvbox'
+  " Looks and Feel
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'dikiaap/minimalist'
+  Plug 'joshdick/onedark.vim'
+  Plug 'morhetz/gruvbox'
 
-	" Telescope
-	Plug 'nvim-lua/popup.nvim'
-	Plug 'nvim-lua/plenary.nvim'
-	Plug 'nvim-telescope/telescope.nvim'
+  " Telescope
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
 
-	" CSS colorizer
-	Plug 'ap/vim-css-color'
+  " CSS colorizer
+  Plug 'ap/vim-css-color'
 
-	" NerdTree
-	Plug 'preservim/nerdtree'
-	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-	Plug 'ryanoasis/vim-devicons'
+  " NerdTree
+  " Plug 'preservim/nerdtree'
+  " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  Plug 'ryanoasis/vim-devicons'
 
-	" Auto Pair
-	Plug 'jiangmiao/auto-pairs'
+  " Auto Pair
+  Plug 'jiangmiao/auto-pairs'
 
-	" Auto Save
-	Plug '907th/vim-auto-save'
+  " Auto Save
+  Plug '907th/vim-auto-save'
 
-	" Start screen
-	Plug 'mhinz/vim-startify'
+  " Start screen
+  Plug 'mhinz/vim-startify'
 
-	" Surround
-	Plug 'tpope/vim-surround'
+  " Surround
+  Plug 'tpope/vim-surround'
 
-	" FloatTerm
-	Plug 'voldikss/vim-floaterm'
+  " FloatTerm
+  Plug 'voldikss/vim-floaterm'
 
-	" Prettier
-	Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+  " Prettier
+  Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
-	" Markdown Preview
-	Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+  " Markdown Preview
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
-	" Comments
-	Plug 'tpope/vim-commentary'
-	
-	" Match Tags
-	Plug 'gregsexton/MatchTag'
+  " Comments
+  Plug 'tpope/vim-commentary'
 
-	" Zen mode
-	Plug 'junegunn/goyo.vim'
+  " Match Tags
+  Plug 'gregsexton/MatchTag'
+
+  " Zen mode
+  Plug 'junegunn/goyo.vim'
+
+  " Ranger in NVIM
+  Plug 'kevinhwang91/rnvimr'
+
+  " LazyGit
+  Plug 'kdheepak/lazygit.nvim'
 
 call plug#end()
 
@@ -66,6 +72,7 @@ call plug#end()
 syntax on
 set cursorline
 set background=dark
+set scrolloff=5
 colorscheme onedark
 
 " Change Themes
@@ -94,9 +101,9 @@ let g:airline_detect_modified=1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#whitespace#enabled = 0
 
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
 set expandtab
 set autoindent
 set smartindent
@@ -105,7 +112,7 @@ set nohlsearch
 set ignorecase
 set showcmd
 set relativenumber number
-set showmatch					" Show matching brackets
+set showmatch					          " Show matching brackets
 set nowrap
 set nobackup                    " No need for backups.
 set nowritebackup
@@ -119,6 +126,26 @@ let g:auto_save_silent = 1
 let g:auto_save = 1  " enable AutoSave on Vim startup
 let g:startify_change_to_vcs_root = 1
 let g:startify_change_to_dir = 1
+
+" Make Ranger replace Netrw and be the file explorer
+let g:rnvimr_enable_ex = 1
+" Hide the files included in gitignore
+let g:rnvimr_hide_gitignore = 1
+" Map Rnvimr action
+let g:rnvimr_action = {
+      \ '<C-t>': 'NvimEdit tabedit',
+      \ '<C-x>': 'NvimEdit split',
+      \ '<C-v>': 'NvimEdit vsplit',
+      \ 'gw': 'JumpNvimCwd',
+      \ 'yw': 'EmitRangerCwd'
+      \ }
+
+" Add views for Ranger to adapt the size of floating window
+let g:rnvimr_ranger_views = [
+      \ {'minwidth': 90, 'ratio': []},
+      \ {'minwidth': 50, 'maxwidth': 89, 'ratio': [1,1]},
+      \ {'maxwidth': 49, 'ratio': [1]}
+      \ ]
 
 let mapleader=" "
 
@@ -152,6 +179,16 @@ nnoremap <silent> <C-l> :wincmd l<CR>
 
 " Close buffer
 nnoremap <C-q> :bd<CR>
+nnoremap <leader>q :bd<CR>
+
+" Open ranger
+nnoremap <silent> <leader>e :RnvimrToggle<CR>
+
+" Open lazygit 
+let g:lazygit_floating_window_winblend = 0.9 " transparency of floating window
+let g:lazygit_floating_window_scaling_factor = 0.8 " scaling factor for floating window
+let g:lazygit_floating_window_use_plenary = 1 " use plenary.nvim to manage floating window if available
+nnoremap <silent> <leader>lg :LazyGit<CR>
 
 " Markdown Config
 let g:mkdp_refresh_slow = 1
@@ -159,9 +196,8 @@ autocmd FileType markdown nnoremap <buffer> <leader>c :MarkdownPreviewToggle<CR>
 
 " Install Plugins
 nnoremap <leader>% :so %<cr>
-" nnoremap <leader>pi :PlugInstall<cr>
-" nnoremap <leader>pc :PlugClean<cr>
 
+" Convert all px to rem in the current buffer 
 nnoremap <leader>rem :%s#\(\d\+\)px#\=printf("%.2f", (submatch(1) / 16.0))."rem"#g<CR>
 
 " FloatTerm config
@@ -230,8 +266,8 @@ let g:WebDevIconsDefaultFileSymbolColor = s:blue
 nnoremap ^ 0
 
 if has('nvim')
-	set termguicolors
-	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  set termguicolors
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
 " TextEdit might fail if hidden is not set.
@@ -258,9 +294,9 @@ endif
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-	  \ pumvisible() ? "\<C-n>" :
-	  \ <SID>check_back_space() ? "\<TAB>" :
-	  \ coc#refresh()
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
@@ -278,7 +314,7 @@ endif
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-							  \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -296,11 +332,11 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
-	execute 'h '.expand('<cword>')
+    execute 'h '.expand('<cword>')
   elseif (coc#rpc#ready())
-	call CocActionAsync('doHover')
+    call CocActionAsync('doHover')
   else
-	execute '!' . &keywordprg . " " . expand('<cword>')
+    execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
 
@@ -369,5 +405,5 @@ nnoremap <silent><nowait> <leader>O  :<C-u>CocList outline<cr>
 autocmd FileType javascript nnoremap <buffer> <leader>c :FloatermNew node %<CR>
 autocmd FileType c nnoremap <buffer> <leader>c :FloatermNew gcc % && ./a.out <CR>
 autocmd FileType python nnoremap <buffer> <leader>c :FloatermNew python3 %<CR>
-autocmd FileType cpp nnoremap <buffer> <leader>c :FloatermNew --autoclose=0 g++ % && ./a.out && rm ./a.out<CR>
+autocmd FileType cpp nnoremap <buffer> <leader>c :cd %:p:h <bar> :FloatermNew --autoclose=0 g++ % && ./a.out && rm ./a.out<CR>
 autocmd FileType html nnoremap <buffer> <leader>c :FloatermNew live-server<CR>
