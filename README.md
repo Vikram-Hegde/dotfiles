@@ -10,5 +10,6 @@ All of these config files are stored in Home directory so I setup a Git Bare Rep
 
 ## Todo
 
-  -[] Port all plugins to lua
-  -[] Modularize config files
+  -[  ] Port all plugins to lua
+
+  -[  ] Modularize config files

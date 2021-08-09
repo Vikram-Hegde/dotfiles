@@ -1,4 +1,4 @@
-"Setup Plug if not present
+" Setup Plug if not present
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -16,6 +16,8 @@ call plug#begin("~/.vim/plugged")
   Plug 'dikiaap/minimalist'
   Plug 'joshdick/onedark.vim'
   Plug 'morhetz/gruvbox'
+  Plug 'markonm/hlyank.vim'
+  Plug 'psliwka/vim-smoothie'
 
   " Telescope
   Plug 'nvim-lua/popup.nvim'
@@ -26,8 +28,8 @@ call plug#begin("~/.vim/plugged")
   Plug 'ap/vim-css-color'
 
   " NerdTree
-  " Plug 'preservim/nerdtree'
-  " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  Plug 'preservim/nerdtree'
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   Plug 'ryanoasis/vim-devicons'
 
   " Auto Pair
@@ -42,6 +44,9 @@ call plug#begin("~/.vim/plugged")
   " Surround
   Plug 'tpope/vim-surround'
 
+  " Comments
+  Plug 'tpope/vim-commentary'
+
   " FloatTerm
   Plug 'voldikss/vim-floaterm'
 
@@ -50,9 +55,6 @@ call plug#begin("~/.vim/plugged")
 
   " Markdown Preview
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-
-  " Comments
-  Plug 'tpope/vim-commentary'
 
   " Match Tags
   Plug 'gregsexton/MatchTag'
@@ -71,8 +73,8 @@ call plug#end()
 " Config Section
 syntax on
 set cursorline
+autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 set background=dark
-set scrolloff=5
 colorscheme onedark
 
 " Change Themes
@@ -87,6 +89,9 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
+
+" Navigating lines
+nnoremap 0 ^
 
 " Airline Config
 let g:airline_theme='onedark'
@@ -149,8 +154,6 @@ let g:rnvimr_ranger_views = [
 
 let mapleader=" "
 
-nnoremap <C-z> <nop>
-
 " Comment Lines
 nmap <leader>/ gcc 
 
@@ -182,19 +185,18 @@ nnoremap <C-q> :bd<CR>
 nnoremap <leader>q :bd<CR>
 
 " Open ranger
-nnoremap <silent> <leader>e :RnvimrToggle<CR>
+nnoremap <silent> <leader>fe :RnvimrToggle<CR>
 
 " Open lazygit 
-let g:lazygit_floating_window_winblend = 0.9 " transparency of floating window
-let g:lazygit_floating_window_scaling_factor = 0.8 " scaling factor for floating window
+let g:lazygit_floating_window_scaling_factor = 0.9 " scaling factor for floating window
 let g:lazygit_floating_window_use_plenary = 1 " use plenary.nvim to manage floating window if available
-nnoremap <silent> <leader>lg :LazyGit<CR>
+nnoremap <silent> <leader>gg :LazyGit<CR>
 
 " Markdown Config
 let g:mkdp_refresh_slow = 1
 autocmd FileType markdown nnoremap <buffer> <leader>c :MarkdownPreviewToggle<CR>
 
-" Install Plugins
+" Source Current File
 nnoremap <leader>% :so %<cr>
 
 " Convert all px to rem in the current buffer 
@@ -263,7 +265,6 @@ let g:WebDevIconsDefaultFolderSymbolColor = s:beige
 " Sets the color for files that did not match any rule
 let g:WebDevIconsDefaultFileSymbolColor = s:blue 
 
-nnoremap ^ 0
 
 if has('nvim')
   set termguicolors
@@ -324,7 +325,7 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
@@ -407,3 +408,4 @@ autocmd FileType c nnoremap <buffer> <leader>c :FloatermNew gcc % && ./a.out <CR
 autocmd FileType python nnoremap <buffer> <leader>c :FloatermNew python3 %<CR>
 autocmd FileType cpp nnoremap <buffer> <leader>c :cd %:p:h <bar> :FloatermNew --autoclose=0 g++ % && ./a.out && rm ./a.out<CR>
 autocmd FileType html nnoremap <buffer> <leader>c :FloatermNew live-server<CR>
+autocmd FileType lua nnoremap <buffer> <leader>c :FloatermNew --autoclose=0 lua %<CR>
