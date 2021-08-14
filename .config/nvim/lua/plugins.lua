@@ -18,36 +18,46 @@ if fn.empty(fn.glob(install_path)) > 0 then
   execute 'packadd packer.nvim'
 end
 
+vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
+
 return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
+
+	-- Looks
+	use 'marko-cerovac/material.nvim'
+	use 'navarasu/onedark.nvim'
+	use 'Mofiqul/vscode.nvim'
+	use 'hoob3rt/lualine.nvim'
+	use 'glepnir/dashboard-nvim'
 	use {
 		'kyazdani42/nvim-tree.lua',
 		requires = 'kyazdani42/nvim-web-devicons'
 	}
-	use 'marko-cerovac/material.nvim'
-	use 'hoob3rt/lualine.nvim'
 	use {
-		'nvim-telescope/telescope.nvim',
-		requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+		'kdheepak/tabline.nvim',
+		config = function()
+			require'tabline'.setup {enable = false}
+		end
 	}
-	use 'glepnir/dashboard-nvim'
+
+	-- Telescope
+	use 'nvim-lua/plenary.nvim'
+	use 'nvim-lua/popup.nvim'
+	use 'nvim-telescope/telescope.nvim'
+
+	-- Handy Utils
 	use 'Pocco81/AutoSave.nvim'
 	use 'jiangmiao/auto-pairs'
 	use 'tpope/vim-surround'
 	use 'tpope/vim-commentary'
 	use 'voldikss/vim-floaterm'
 	use 'norcalli/nvim-colorizer.lua'
-	use {
-		'neoclide/coc.nvim', branch = 'release'
-	}
-	use {
-		'kdheepak/tabline.nvim',
-		config = function()
-			require'tabline'.setup {enable = false}
-		end,
-		requires = {'hoob3rt/lualine.nvim', 'kyazdani42/nvim-web-devicons'}
-	}
-	use 'rafamadriz/neon'
+	use { 'gregsexton/MatchTag', ft = {'html'} }
+	use 'ThePrimeagen/vim-be-good'
+
+	-- Language Support
+	use { 'neoclide/coc.nvim', branch = 'release' }
 	use 'sheerun/vim-polyglot'
+	use { 'prettier/vim-prettier', run = "npm install" }
 end)

@@ -36,8 +36,8 @@ map('n', '<leader>dd', ':lcd %:h<CR>')
 map('n', '<leader>du', ':cd ..<CR>')
 
 -- Switch between buffers easily
-map('n', '<tab>', ':w <bar> :bnext<CR>')
-map('n', '<s-tab>', ':w <bar> :bprevious<CR>')
+map('n', '<tab>', ':bnext<CR>')
+map('n', '<s-tab>', ':bprevious<CR>')
 map('n', '<leader>q', ':bd<CR>')
 
 -- Move between spilt windows
@@ -47,21 +47,26 @@ map('n', '<C-k>', ':wincmd k<CR>', {silent = true})
 map('n', '<C-l>', ':wincmd l<CR>', {silent = true})
 
 -- NVIM TREE toggle
-map('n', '<leader>e', ':NvimTreeToggle<CR>')
+map('n', '<leader>e', ':NvimTreeToggle<CR>', {silent = true})
+map('n', '<leader>fs', ':NvimTreeFindFile<CR>', {silent = true})
 
 -- GoTo Dashboard
 map('n', '<leader>db', '<cmd>Dashboard<CR>', {silent = true})
 
+-- GoTo Config File
+map('n', '<leader>lc', ':e ~/.config/nvim/init.lua<CR>', {silent = true})
+
 -- Source Lua file
-map('n', '<leader>%', ':w <bar> :luafile %<CR>')
+map('n', '<leader>ls', ':luafile %<CR>')
 
 -- Switch material themes easily
-map('n', '<leader>mm', '[[<Cmd>lua require("material.functions").toggle_style()<CR>]]', {silent = true})
+-- map('n', '<leader>mm', '[[<Cmd>lua require("material.functions").toggle_style()<CR>]]', {silent = true})
 
 -- Telescope
 map('n', '<leader>o', '<cmd>Telescope find_files<CR>', {silent = true})
-map('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', {silent = true})
+map('n', '<leader>fw', '<cmd>Telescope live_grep<CR>', {silent = true})
 map('n', '<leader>fb', '<cmd>Telescope buffers<CR>', {silent = true})
+map('n', '<leader>fr', '<cmd>Telescope oldfiles<CR>', {silent = true})
 
 -- Floaterm Remaps
 g.floaterm_keymap_new = '<leader>tn'
@@ -71,4 +76,3 @@ g.floaterm_keymap_next = '<leader>tl'
 
 -- Convert all px to rem
 cmd [[ autocmd Filetype scss nnoremap <leader>rem :%s#\(\d\+\)px#\=printf("%.2f", (submatch(1) / 16.0))."rem"#g<CR> ]]
-

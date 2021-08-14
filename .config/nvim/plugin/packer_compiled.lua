@@ -73,6 +73,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/vikram/.local/share/nvim/site/pack/packer/start/AutoSave.nvim"
   },
+  MatchTag = {
+    loaded = false,
+    needs_bufread = true,
+    path = "/home/vikram/.local/share/nvim/site/pack/packer/opt/MatchTag"
+  },
   ["auto-pairs"] = {
     loaded = true,
     path = "/home/vikram/.local/share/nvim/site/pack/packer/start/auto-pairs"
@@ -93,10 +98,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/vikram/.local/share/nvim/site/pack/packer/start/material.nvim"
   },
-  neon = {
-    loaded = true,
-    path = "/home/vikram/.local/share/nvim/site/pack/packer/start/neon"
-  },
   ["nvim-colorizer.lua"] = {
     loaded = true,
     path = "/home/vikram/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
@@ -108,6 +109,10 @@ _G.packer_plugins = {
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/vikram/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+  },
+  ["onedark.nvim"] = {
+    loaded = true,
+    path = "/home/vikram/.local/share/nvim/site/pack/packer/start/onedark.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -130,6 +135,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/vikram/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
+  ["vim-be-good"] = {
+    loaded = true,
+    path = "/home/vikram/.local/share/nvim/site/pack/packer/start/vim-be-good"
+  },
   ["vim-commentary"] = {
     loaded = true,
     path = "/home/vikram/.local/share/nvim/site/pack/packer/start/vim-commentary"
@@ -142,9 +151,17 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/vikram/.local/share/nvim/site/pack/packer/start/vim-polyglot"
   },
+  ["vim-prettier"] = {
+    loaded = true,
+    path = "/home/vikram/.local/share/nvim/site/pack/packer/start/vim-prettier"
+  },
   ["vim-surround"] = {
     loaded = true,
     path = "/home/vikram/.local/share/nvim/site/pack/packer/start/vim-surround"
+  },
+  ["vscode.nvim"] = {
+    loaded = true,
+    path = "/home/vikram/.local/share/nvim/site/pack/packer/start/vscode.nvim"
   }
 }
 
@@ -153,6 +170,13 @@ time([[Defining packer_plugins]], false)
 time([[Config for tabline.nvim]], true)
 try_loadstring("\27LJ\2\nD\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\venable\1\nsetup\ftabline\frequire\0", "config", "tabline.nvim")
 time([[Config for tabline.nvim]], false)
+vim.cmd [[augroup packer_load_aucmds]]
+vim.cmd [[au!]]
+  -- Filetype lazy-loads
+time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType html ++once lua require("packer.load")({'MatchTag'}, { ft = "html" }, _G.packer_plugins)]]
+time([[Defining lazy-load filetype autocommands]], false)
+vim.cmd("augroup END")
 if should_profile then save_profiles() end
 
 end)

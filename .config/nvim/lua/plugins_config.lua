@@ -12,19 +12,26 @@ local cmd = vim.cmd
 
 -- NvimTree Config
 g.nvim_tree_ignore = {'.git', 'node_modules', '.cache'}
-g.nvim_tree_gitignore = true
+g.nvim_tree_auto_open = 1 -- opens the tree when typing `vim $DIR` or `vim`
+g.nvim_tree_auto_ignore_ft = { 'startify', 'dashboard' } -- empty by default, don't auto open tree on specific filetypes.
+g.nvim_tree_update_cwd = 1 -- will update the tree cwd when changing nvim's directory (DirChanged event). Behaves strangely with autochdir set.
+g.nvim_tree_quit_on_open = 1 -- closes the tree when you open a file
 
 -- Color Scheme
---require('material').set()
--- g.material_style="darker"
+g.material_style='deep ocean'
+g.material_borders=true
+g.material_hide_eob=true
+-- require('material').set()
 
-g.neon_style="default"
-cmd[[colorscheme neon]]
+-- g.vscode_style= "dark"
+-- cmd [[colorscheme vscode]]
+
+require('onedark').setup()
 
 -- Lualine Config
 require('lualine').setup {
 	options = {
-		theme = 'neon'
+		theme = 'onedark'
 	},
   tabline = {
     lualine_a = {},
@@ -46,11 +53,21 @@ g.tabline_show_filename_only = true
 -- Changing the default value of dashboard
 g.dashboard_default_executive='telescope'
 g.dashboard_custom_section = {
-    a = {description = {'  Recently Opened Files          SPC f r'}, command = 'Telescope oldfiles'},
-    b = {description = {'  Find File                       SPC o'}, command = 'Telescope find_files'},
-    c = {description = {'  Find Word                      SPC f g'}, command = 'Telescope live_grep'},
-    d = {description = {'  Open Project                   SPC f m'}, command = 'Telescope marks'},
-    e = {description = {'  Open Neovim Configuration      SPC f P'}, command = ':e ~/.config/nvim/init.lua'},
+    a = {description = {'  Recently Opened Files          SPC f r'}, command = 'Telescope oldfiles'},
+    b = {description = {'  Find File                       SPC o'}, command = 'Telescope find_files'},
+    c = {description = {'  Find Word                      SPC f w'}, command = 'Telescope live_grep'},
+    d = {description = {'ﱮ  Open Project                   SPC f m'}, command = 'Telescope marks'},
+    e = {description = {'漣 Open Neovim Configuration      SPC f c'}, command = ':e ~/.config/nvim/init.lua'},
+}
+-- Icons from https://www.nerdfonts.com/cheat-sheet
+
+-- Telescope Config
+require('telescope').setup {
+  defaults = {
+    prompt_prefix = '  ',
+    selection_caret = '  ',
+    winblend = 10,
+  },
 }
 
 -- AutoSave config
@@ -78,9 +95,9 @@ g.floaterm_autoclose = 1
 cmd 'autocmd FileType javascript nnoremap <buffer> <leader>c :FloatermNew node %<CR>'
 cmd 'autocmd FileType c nnoremap <buffer> <leader>c :FloatermNew gcc % && ./a.out <CR>'
 cmd 'autocmd FileType python nnoremap <buffer> <leader>c :FloatermNew python3 %<CR>'
-cmd 'autocmd FileType cpp nnoremap <buffer> <leader>c :cd %:p:h <bar> :FloatermNew --autoclose=0 g++ % && ./a.out && rm ./a.out<CR>'
+cmd 'autocmd FileType cpp nnoremap <buffer> <leader>c :FloatermNew --autoclose=0 g++ % && ./a.out && rm ./a.out<CR>'
 cmd 'autocmd FileType html nnoremap <buffer> <leader>c :FloatermNew live-server<CR>'
--- cmd 'autocmd FileType lua nnoremap <buffer> <leader>c :FloatermNew --autoclose=0 lua %<CR>'
+cmd 'autocmd FileType scss nnoremap <buffer> <leader>c :FloatermNew compile-sass<CR>'
 
 -- Colorizer Config
 require('colorizer').setup()

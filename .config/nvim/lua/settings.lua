@@ -5,13 +5,13 @@
  (__  )  __/ /_/ /_/ / / / / /_/ (__  )
 /____/\___/\__/\__/_/_/ /_/\__, /____/
                           /____/
+
 --]]
 local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
--- local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 local g = vim.g      -- a table to access global variables
 local opt = vim.opt  -- to set options
 
-cmd 'syntax enable'
+-- Better indenting based on filetype
 cmd 'filetype plugin indent on'
 
 -- Highlight while selecting text
@@ -28,11 +28,11 @@ g.mapleader=' '
 
 opt.cursorline=true
 opt.compatible=false
-opt.background="dark"
-opt.syntax="enable"
+opt.termguicolors=true
+opt.ignorecase=true
+opt.syntax="on"
 opt.shiftwidth=2
 opt.tabstop=2
-opt.softtabstop=2
 opt.autoindent=true
 opt.smartindent=true
 opt.hlsearch=false
@@ -40,10 +40,8 @@ opt.showcmd=true
 opt.incsearch=true
 opt.relativenumber=true
 opt.number=true
-opt.showmatch=true
 opt.wrap=false
 opt.backup=false
 opt.writebackup=false
-opt.termguicolors=true
 opt.swapfile=false
 opt.clipboard:append({ 'unnamed' })
