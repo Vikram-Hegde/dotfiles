@@ -18,20 +18,20 @@ g.nvim_tree_update_cwd = 1 -- will update the tree cwd when changing nvim's dire
 g.nvim_tree_quit_on_open = 1 -- closes the tree when you open a file
 
 -- Color Scheme
-g.material_style='deep ocean'
+g.material_style='darker'
 g.material_borders=true
 g.material_hide_eob=true
--- require('material').set()
+require('material').set()
 
--- g.vscode_style= "dark"
--- cmd [[colorscheme vscode]]
+-- g.everforest_style= "hard"
+-- cmd [[colorscheme everforest]]
 
-require('onedark').setup()
+--require('onedark').setup()
 
 -- Lualine Config
 require('lualine').setup {
 	options = {
-		theme = 'onedark'
+		theme = 'modus_vivendi'
 	},
   tabline = {
     lualine_a = {},
@@ -72,20 +72,20 @@ require('telescope').setup {
 
 -- AutoSave config
 require('autosave').setup(
-    {
-        enabled = true,
-        execution_message = "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"),
-        events = {"InsertLeave", "TextChanged"},
-        conditions = {
-            exists = true,
-            filetype_is_not = {},
-            modifiable = true
-        },
-        write_all_buffers = false,
-        on_off_commands = true,
-        clean_command_line_interval = 0,
-        debounce_delay = 135
-    }
+  {
+    enabled = true,
+    execution_message = "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"),
+    events = {"InsertLeave", "TextChanged"},
+    conditions = {
+        exists = true,
+        filetype_is_not = {},
+        modifiable = true
+    },
+    write_all_buffers = false,
+    on_off_commands = true,
+    clean_command_line_interval = 0,
+    debounce_delay = 135
+  }
 )
 
 -- Floaterm Config

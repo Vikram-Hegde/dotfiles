@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-global
 --[[
            __            _
     ____  / /_  ______ _(_)___  _____
@@ -27,7 +26,7 @@ return require('packer').startup(function()
 	-- Looks
 	use 'marko-cerovac/material.nvim'
 	use 'navarasu/onedark.nvim'
-	use 'Mofiqul/vscode.nvim'
+	use 'sainnhe/everforest'
 	use 'hoob3rt/lualine.nvim'
 	use 'glepnir/dashboard-nvim'
 	use {

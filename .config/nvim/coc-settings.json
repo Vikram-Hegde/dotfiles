@@ -16,5 +16,6 @@
 		"javascriptreact",
 		"scss"
 	],
-	"javascript.autoClosingTags": true
+	"javascript.autoClosingTags": true,
+	"snippets.ultisnips.usePythonx": false
 }

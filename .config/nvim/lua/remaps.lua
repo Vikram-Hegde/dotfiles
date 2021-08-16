@@ -22,6 +22,9 @@ map('n', '<Space>', '<NOP>', {silent = true})
 -- Easier to reach 0 than ^
 map('n', '0', '^')
 
+-- Makes sense to do this one. like C and D.
+map('n', 'Y', 'y$')
+
 -- Moving lines
 map('n', '<A-j>', ':m .+1<CR>==', {silent = true})
 map('n', '<A-k>', ':m .-2<CR>==', {silent = true})
@@ -76,3 +79,4 @@ g.floaterm_keymap_next = '<leader>tl'
 
 -- Convert all px to rem
 cmd [[ autocmd Filetype scss nnoremap <leader>rem :%s#\(\d\+\)px#\=printf("%.2f", (submatch(1) / 16.0))."rem"#g<CR> ]]
+
