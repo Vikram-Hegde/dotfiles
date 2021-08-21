@@ -3,7 +3,7 @@ set hidden
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-set updatetime=300
+set updatetime=200
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
@@ -51,7 +51,7 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
@@ -87,7 +87,7 @@ augroup end
 " nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " " Remap keys for applying codeAction to the current buffer.
-" nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>ac  <Plug>(coc-codeaction)
 
 " Apply AutoFix to problem on the current line.
 nmap <leader>sf  <Plug>(coc-fix-current)
@@ -177,3 +177,8 @@ let g:coc_snippet_next = '<tab>'
 " place your cursor on an id or class and hit <leader>]
 " to jump to the definition
 nnoremap <leader>] :tag /<c-r>=expand('<cword>')<cr><cr>
+
+function! DisableST()
+  return " "
+endfunction
+au BufEnter NvimTree setlocal statusline=%!DisableST()

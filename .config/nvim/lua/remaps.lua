@@ -25,6 +25,10 @@ map('n', '0', '^')
 -- Makes sense to do this one. like C and D.
 map('n', 'Y', 'y$')
 
+-- Cursor in center while <C-d> and <C-u>
+map('n', '<C-d>', '<C-d>zz')
+map('n', '<C-u>', '<C-u>zz')
+
 -- Moving lines
 map('n', '<A-j>', ':m .+1<CR>==', {silent = true})
 map('n', '<A-k>', ':m .-2<CR>==', {silent = true})
@@ -63,7 +67,7 @@ map('n', '<leader>lc', ':e ~/.config/nvim/init.lua<CR>', {silent = true})
 map('n', '<leader>ls', ':luafile %<CR>')
 
 -- Switch material themes easily
--- map('n', '<leader>mm', '[[<Cmd>lua require("material.functions").toggle_style()<CR>]]', {silent = true})
+map('n', '<leader>mm', '[[<Cmd>lua require("material.functions").toggle_style()<CR>]]', {silent = true})
 
 -- Telescope
 map('n', '<leader>o', '<cmd>Telescope find_files<CR>', {silent = true})
@@ -79,4 +83,3 @@ g.floaterm_keymap_next = '<leader>tl'
 
 -- Convert all px to rem
 cmd [[ autocmd Filetype scss nnoremap <leader>rem :%s#\(\d\+\)px#\=printf("%.2f", (submatch(1) / 16.0))."rem"#g<CR> ]]
-

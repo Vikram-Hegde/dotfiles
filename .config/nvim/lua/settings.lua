@@ -28,7 +28,6 @@ g.mapleader=' '
 
 opt.cursorline=true
 opt.compatible=false
-opt.termguicolors=true
 opt.ignorecase=true
 opt.syntax="on"
 opt.shiftwidth=2

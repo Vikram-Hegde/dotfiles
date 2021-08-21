@@ -26,7 +26,6 @@ return require('packer').startup(function()
 	-- Looks
 	use 'marko-cerovac/material.nvim'
 	use 'navarasu/onedark.nvim'
-	use 'sainnhe/everforest'
 	use 'hoob3rt/lualine.nvim'
 	use 'glepnir/dashboard-nvim'
 	use {
@@ -57,6 +56,6 @@ return require('packer').startup(function()
 
 	-- Language Support
 	use { 'neoclide/coc.nvim', branch = 'release' }
-	use 'sheerun/vim-polyglot'
 	use { 'prettier/vim-prettier', run = "npm install" }
+	use 'sheerun/vim-polyglot'
 end)

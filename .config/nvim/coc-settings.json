@@ -9,7 +9,7 @@
 		"html",
 		"javascript"
 	],
-	"html.format.extraLiners": "head, body, div, /html",
+	"html.format.extraLiners": "section",
 	"html-css-support.enabledLanguages": [
 		"html",
 		"javascript",

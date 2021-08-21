@@ -2,7 +2,7 @@
 
 if [ -f "./*.scss" ]; then
     echo "Scss file exists... compiling it"
-    sass --watch --no-source-map ./*.scss ./style.css
+    sass --watch --no-source-map ./style*.scss ./style.css
 else 
     if [ -d "./styles" -a -d "./styles/scss" ]; then 
         cd styles
