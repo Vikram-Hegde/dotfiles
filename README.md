@@ -8,7 +8,18 @@ All of these config files are stored in Home directory so I setup a Git Bare Rep
 
 [Guide for Git Bare Repo](https://www.atlassian.com/git/tutorials/dotfiles)
 
-## Todo
+## Neovim 
 
-  -[ x ] Port all plugins to lua
-  -[ x ] Modularize config files
+![Screenshot](screenshot.png "Neovim Looks")
+
+### Folder Structure for Neovim Configuration
+
+📂 ~/.config/nvim
+├── 📂 lua
+│ ├── 🌑 plugin_config.lua
+│ ├── 🌑 plugins.lua
+│ ├── 🌑 remaps.lua
+│ ├── 🌑 settings.lua
+├── 📁 plugin
+│ ├── 🌑 coc.vim
+└── 🌑 init.lua

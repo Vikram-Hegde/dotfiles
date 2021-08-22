@@ -3,3 +3,5 @@
 # Please adapt and uncomment the following lines: 
 name = Vikram-Hegde 
 email = vikramhegde1440@gmail.com
+[credential]
+	helper = cache
