@@ -4,9 +4,7 @@
 - Boilerplate for Web Development
 - Script for creating the boilerplate
 
-All of these config files are stored in Home directory so I setup a Git Bare Repository to upload all of these to Github therefore keeping a backup making it easy to port the same config to other machines
-
-[Guide for Git Bare Repo](https://www.atlassian.com/git/tutorials/dotfiles)
+[Guide for Git Bare Repo](https://www.atlassian.com/git/tutorials/dotfiles) for setting up your own dotfiles management.
 
 ## Neovim 
 
@@ -14,13 +12,19 @@ All of these config files are stored in Home directory so I setup a Git Bare Rep
 
 ### Folder Structure for Neovim Configuration
 ```
-📂 ~/.config/nvim
-├── 📂 lua
-│ ├── 🌑 plugin_config.lua
-│ ├── 🌑 plugins.lua
-│ ├── 🌑 remaps.lua
-│ ├── 🌑 settings.lua
-├── 📁 plugin
-│ ├── 🌑 coc.vim
-└── 🌑 init.lua
+config/nvim
+├── coc-settings.json
+├── init.lua
+├── lua
+│   ├── plugins_config.lua
+│   ├── plugins.lua
+│   ├── remaps.lua
+│   └── settings.lua
+└── plugin
+    └── coc.vim
 ```
+
+## ToDo
+
+- [  ] Create a one line installer script
+- [  ] Probably docs for keybindings ? (seems like extra work)

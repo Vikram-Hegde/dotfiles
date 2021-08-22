@@ -11,11 +11,8 @@ local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
 local g = vim.g      -- a table to access global variables
 local opt = vim.opt  -- to set options
 
--- Better indenting based on filetype
-cmd 'filetype plugin indent on'
-
 -- Highlight while selecting text
-cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
+cmd 'autocmd TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 
 -- Removing the annoying comments added next line
 cmd 'autocmd BufNewFile,BufRead * setlocal formatoptions-=cro'
@@ -27,16 +24,11 @@ cmd 'autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> se
 g.mapleader=' '
 
 opt.cursorline=true
-opt.compatible=false
 opt.ignorecase=true
-opt.syntax="on"
 opt.shiftwidth=2
 opt.tabstop=2
-opt.autoindent=true
 opt.smartindent=true
 opt.hlsearch=false
-opt.showcmd=true
-opt.incsearch=true
 opt.relativenumber=true
 opt.number=true
 opt.wrap=false

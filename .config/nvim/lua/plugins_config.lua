@@ -95,6 +95,7 @@ cmd 'autocmd FileType python nnoremap <buffer> <leader>c :FloatermNew python3 %<
 cmd 'autocmd FileType cpp nnoremap <buffer> <leader>c :FloatermNew --autoclose=0 g++ % && ./a.out && rm ./a.out<CR>'
 cmd 'autocmd FileType html nnoremap <buffer> <leader>c :FloatermNew live-server<CR>'
 cmd 'autocmd FileType scss nnoremap <buffer> <leader>c :FloatermNew compile-sass<CR>'
+cmd 'autocmd FileType markdown nnoremap <buffer> <leader>c :FloatermNew mlp %<CR>'
 
 -- Colorizer Config
 require('colorizer').setup()
