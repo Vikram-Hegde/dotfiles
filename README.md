@@ -13,7 +13,7 @@ All of these config files are stored in Home directory so I setup a Git Bare Rep
 ![Screenshot](screenshot.png "Neovim Looks")
 
 ### Folder Structure for Neovim Configuration
-
+```
 📂 ~/.config/nvim
 ├── 📂 lua
 │ ├── 🌑 plugin_config.lua
@@ -23,3 +23,4 @@ All of these config files are stored in Home directory so I setup a Git Bare Rep
 ├── 📁 plugin
 │ ├── 🌑 coc.vim
 └── 🌑 init.lua
+```
