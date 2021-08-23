@@ -27,4 +27,5 @@ config/nvim
 ## ToDo
 
 - [  ] Create a one line installer script
-- [  ] Probably docs for keybindings ? (seems like extra work)
+- [  ] Switch from coc.nvim to LSP
+- [  ] Add neogit and gitsigns
