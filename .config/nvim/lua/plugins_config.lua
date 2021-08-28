@@ -21,14 +21,14 @@ g.nvim_tree_root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ",
 g.material_style='darker'
 g.material_borders=true
 g.material_hide_eob=true
--- require('material').set()
-vim.g.onedark_style = 'darker'
-require('onedark').setup()
+require('material').set()
+-- vim.g.onedark_style = 'darker'
+-- require('onedark').setup()
 
 -- Lualine Config
 require('lualine').setup {
 	options = {
-		theme = 'onedark'
+		theme = 'codedark'
 	},
   tabline = {
     lualine_a = {},
@@ -90,9 +90,10 @@ g.floaterm_wintype = 'split'
 g.floaterm_height = 0.3
 g.floaterm_autoclose = 1
 cmd 'autocmd FileType javascript nnoremap <buffer> <leader>c :FloatermNew node %<CR>'
-cmd 'autocmd FileType c nnoremap <buffer> <leader>c :FloatermNew --autoclose=0 gcc % && ./a.out && rm ./a.out <CR>'
+cmd 'autocmd FileType c nnoremap <buffer> <leader>c :FloatermNew --autoclose=0 gcc % -lm && ./a.out && rm ./a.out<CR>'
 cmd 'autocmd FileType python nnoremap <buffer> <leader>c :FloatermNew python3 %<CR>'
 cmd 'autocmd FileType cpp nnoremap <buffer> <leader>c :FloatermNew --autoclose=0 g++ % && ./a.out && rm ./a.out<CR>'
+cmd 'autocmd FileType java nnoremap <buffer> <leader>c :FloatermNew --autoclose=0 java %<CR>'
 cmd 'autocmd FileType html nnoremap <buffer> <leader>c :FloatermNew live-server<CR>'
 cmd 'autocmd FileType scss nnoremap <buffer> <leader>c :FloatermNew compile-sass<CR>'
 cmd 'autocmd FileType markdown nnoremap <buffer> <leader>c :FloatermNew mlp %<CR>'

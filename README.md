@@ -28,4 +28,5 @@ config/nvim
 
 - [  ] Create a one line installer script
 - [  ] Switch from coc.nvim to LSP
+- [  ] Switch from floaterm to [toggleterm](https://github.com/akinsho/toggleterm.nvim)
 - [  ] Add neogit and gitsigns

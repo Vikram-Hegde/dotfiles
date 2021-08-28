@@ -14,9 +14,9 @@ openEditor() {
     cd styles && sass --no-source-map --watch scss:css
 }
 
-if [ $editor == "code" ] || [ $editor == "vim" ]
+if [ $editor == "code" ] || [ $editor == "vim" ] || [ $editor == "nvim" ]
 then
     openEditor "$editor" "$fileName"
 else
-    echo -e "\nEditor not available 😕. Try code or vim"
+    echo -e "\nEditor not available 😕. Try code or (n)vim"
 fi

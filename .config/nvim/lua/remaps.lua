@@ -22,6 +22,7 @@ map('n', '<Space>', '<NOP>', {silent = true})
 -- Easier to reach 0 than ^
 map('n', '0', '^')
 
+
 -- Makes sense to do this one. like C and D.
 map('n', 'Y', 'y$')
 

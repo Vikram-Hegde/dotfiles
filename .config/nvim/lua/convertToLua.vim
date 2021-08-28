@@ -174,11 +174,13 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 
-" place your cursor on an id or class and hit <leader>]
-" to jump to the definition
-nnoremap <leader>] :tag /<c-r>=expand('<cword>')<cr><cr>
-
 function! DisableST()
   return " "
 endfunction
 au BufEnter NvimTree setlocal statusline=%!DisableST()
+
+" Easier command mode navigation
+cnoremap <expr> <c-n> wildmenumode() ? "\<c-n>" : "\<down>"
+cnoremap <expr> <c-p> wildmenumode() ? "\<c-p>" : "\<up>"
+
+autocmd BufNewFile,BufRead * setlocal formatoptions-=cro

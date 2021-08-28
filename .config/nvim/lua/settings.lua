@@ -14,9 +14,6 @@ local opt = vim.opt  -- to set options
 -- Highlight while selecting text
 cmd 'autocmd TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 
--- Removing the annoying comments added next line
-cmd 'autocmd BufNewFile,BufRead * setlocal formatoptions-=cro'
-
 -- Dont show tabline in dashboard
 cmd 'autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2'
 
@@ -36,3 +33,7 @@ opt.backup=false
 opt.writebackup=false
 opt.swapfile=false
 opt.clipboard:append({ 'unnamed' })
+
+-- Removing the annoying comments added next line
+-- For some reason adding this in a .vim file works but not here. might be some conflict
+-- cmd 'autocmd BufNewFile,BufRead * setlocal formatoptions-=cro'
