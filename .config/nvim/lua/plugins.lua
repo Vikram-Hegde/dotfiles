@@ -49,7 +49,7 @@ return require('packer').startup(function()
 	use 'jiangmiao/auto-pairs'
 	use 'tpope/vim-surround'
 	use 'tpope/vim-commentary'
-	use 'voldikss/vim-floaterm'
+	use 'akinsho/toggleterm.nvim'
 	use 'norcalli/nvim-colorizer.lua'
 	use { 'gregsexton/MatchTag', ft = {'html'} }
 	use 'ThePrimeagen/vim-be-good'

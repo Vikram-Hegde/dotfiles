@@ -21,12 +21,12 @@ config/nvim
 │   ├── remaps.lua
 │   └── settings.lua
 └── plugin
-    └── coc.vim
+    └── convertToLua.vim
 ```
 
 ## ToDo
 
 - [  ] Create a one line installer script
 - [  ] Switch from coc.nvim to LSP
-- [  ] Switch from floaterm to [toggleterm](https://github.com/akinsho/toggleterm.nvim)
-- [  ] Add neogit and gitsigns
+- [ x ] Switch from floaterm to [toggleterm](https://github.com/akinsho/toggleterm.nvim)
+- [  ] Add and configure gitsigns

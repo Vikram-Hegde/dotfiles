@@ -17,10 +17,15 @@ cmd 'autocmd TextYankPost * lua vim.highlight.on_yank {on_visual = false}'
 -- Dont show tabline in dashboard
 cmd 'autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2'
 
+-- Removing the annoying comments added next line
+-- For some reason adding this in a .vim file works but not here. might be some conflict
+cmd 'autocmd BufNewFile,BufRead * setlocal formatoptions-=cro'
+
 -- Mapping leader to <Space>
 g.mapleader=' '
 
 opt.cursorline=true
+opt.hidden=true
 opt.ignorecase=true
 opt.shiftwidth=2
 opt.tabstop=2
@@ -34,6 +39,3 @@ opt.writebackup=false
 opt.swapfile=false
 opt.clipboard:append({ 'unnamed' })
 
--- Removing the annoying comments added next line
--- For some reason adding this in a .vim file works but not here. might be some conflict
--- cmd 'autocmd BufNewFile,BufRead * setlocal formatoptions-=cro'
