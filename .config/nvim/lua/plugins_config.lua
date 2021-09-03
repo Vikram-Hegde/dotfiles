@@ -121,8 +121,8 @@ cmd 'autocmd FileType python nnoremap <buffer> <leader>c :TermExec cmd="python3 
 cmd 'autocmd FileType cpp nnoremap <buffer> <leader>c :TermExec cmd="g++ % && ./a.out && rm ./a.out" direction=vertical<CR>'
 cmd 'autocmd FileType java nnoremap <buffer> <leader>c :TermExec cmd="java %" direction=vertical<CR>'
 cmd 'autocmd FileType html nnoremap <buffer> <leader>c :TermExec cmd="live-server"<CR>'
-cmd 'autocmd FileType scss nnoremap <buffer> <leader>c :TermExec cmd="compile-sass"<CR>'
-cmd 'autocmd FileType markdown nnoremap <buffer> <leader>c :TermExec cmd="mlp %"<CR>'
+cmd 'autocmd FileType scss nnoremap <buffer> <leader>c :2TermExec cmd="compile-sass"<CR>'
+cmd 'autocmd FileType markdown nnoremap <buffer> <leader>c :MarkdownPreviewToggle<CR>'
 
 -- Colorizer Config
 require('colorizer').setup()

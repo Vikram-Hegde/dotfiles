@@ -8,6 +8,7 @@
 --]]
 require('plugins')
 require('plugins_config')
+require('coc')
 
 require('settings')
 

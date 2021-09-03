@@ -26,12 +26,12 @@ return require('packer').startup(function()
 	-- Looks
 	use 'marko-cerovac/material.nvim'
 	use 'navarasu/onedark.nvim'
-	use 'hoob3rt/lualine.nvim'
 	use 'glepnir/dashboard-nvim'
 	use {
 		'kyazdani42/nvim-tree.lua',
 		requires = 'kyazdani42/nvim-web-devicons'
 	}
+	use 'hoob3rt/lualine.nvim'
 	use {
 		'kdheepak/tabline.nvim',
 		config = function()
@@ -52,10 +52,21 @@ return require('packer').startup(function()
 	use 'akinsho/toggleterm.nvim'
 	use 'norcalli/nvim-colorizer.lua'
 	use { 'gregsexton/MatchTag', ft = {'html'} }
-	use 'ThePrimeagen/vim-be-good'
+	use 'ThePrimeagen/vim-be-good' -- Game
+	use 'wakatime/vim-wakatime' -- Code statistics
+	use {
+		'lewis6991/gitsigns.nvim',
+		requires = {
+			'nvim-lua/plenary.nvim'
+		},
+		config = function()
+			require('gitsigns').setup()
+		end
+	}
 
 	-- Language Support
 	use { 'neoclide/coc.nvim', branch = 'release' }
+	use {'iamcco/markdown-preview.nvim', run = 'cd app && npm install', cmd = 'MarkdownPreview', ft = { 'markdown' }}
 	use { 'prettier/vim-prettier', run = "npm install" }
 	use 'sheerun/vim-polyglot'
 end)

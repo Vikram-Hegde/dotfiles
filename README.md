@@ -4,7 +4,7 @@
 - Boilerplate for Web Development
 - Script for creating the boilerplate
 
-[Guide for Git Bare Repo](https://www.atlassian.com/git/tutorials/dotfiles) for setting up your own dotfiles management.
+[Guide for Git Bare Repo](https://www.atlassian.com/git/tutorials/dotfiles) for setting up your own dotfiles manager.
 
 ## Neovim 
 
@@ -16,17 +16,17 @@ config/nvim
 ├── coc-settings.json
 ├── init.lua
 ├── lua
+│   ├── coc.lua
 │   ├── plugins_config.lua
 │   ├── plugins.lua
 │   ├── remaps.lua
-│   └── settings.lua
-└── plugin
-    └── convertToLua.vim
+│   ├── settings.lua
+│   └── utils.lua
 ```
 
 ## ToDo
 
 - [  ] Create a one line installer script
-- [  ] Switch from coc.nvim to LSP
+- [ x ] Switch from coc.vim to coc.lua
 - [ x ] Switch from floaterm to [toggleterm](https://github.com/akinsho/toggleterm.nvim)
-- [  ] Add and configure gitsigns
+- [ x ] Add and configure gitsigns
