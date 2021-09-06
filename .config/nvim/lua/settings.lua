@@ -28,6 +28,7 @@ cmd [[ autocmd BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "N
 g.mapleader=' '
 
 o.updatetime=200
+o.termguicolors=true
 o.numberwidth=5
 o.cursorline=true
 o.hidden=true

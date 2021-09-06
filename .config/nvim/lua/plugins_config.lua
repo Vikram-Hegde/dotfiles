@@ -18,10 +18,33 @@ g.nvim_tree_update_cwd = 1 -- will update the tree cwd when changing nvim's dire
 g.nvim_tree_root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" }
 
 -- Color Scheme
-g.material_style='darker'
-g.material_borders=true
-g.material_hide_eob=true
--- require('material').set()
+-- g.material_style='darker'
+-- require('material').setup({
+--   contrast = true,
+--   borders = false,
+--   italics = {
+--     comments = false,
+--     strings = false,
+--     keywords = false,
+--     functions = false,
+--     variables = false
+--   },
+--   contrast_windows = {
+--     "terminal",
+--     "packer",
+--     "qf"
+--   },
+--   text_contrast = {
+--     lighter = false,
+--     darker = true
+--   },
+--   disable = {
+--     background = false,
+--     term_colors = false,
+--     eob_lines = true
+--   }
+-- })
+
 vim.g.onedark_style = 'darker'
 require('onedark').setup()
 
