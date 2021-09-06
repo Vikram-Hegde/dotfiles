@@ -19,15 +19,16 @@ cmd [[ autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> 
 
 -- Removing the annoying comments added next line
 -- For some reason adding this in a .vim file works but not here. might be some conflict
-cmd [[ autocmd BufNewFile,BufRead * set formatoptions-=cro ]]
+cmd [[ autocmd BufNewFile,BufRead,BufEnter,BufWinEnter,WinEnter * set formatoptions-=cro ]]
 
 -- Remove Statusline when in NvimTree
-cmd [[ au BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif ]]
+cmd [[ autocmd BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif ]]
 
 -- Mapping leader to <Space>
 g.mapleader=' '
 
 o.updatetime=200
+o.numberwidth=5
 o.cursorline=true
 o.hidden=true
 o.ignorecase=true

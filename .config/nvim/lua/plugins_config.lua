@@ -12,7 +12,7 @@ local cmd = vim.cmd
 
 -- NvimTree Config
 g.nvim_tree_ignore = {'.git', 'node_modules', '.cache'}
-g.nvim_tree_auto_open = 1 -- opens the tree when typing `vim $DIR` or `vim`
+g.nvim_tree_auto_open = 0 -- opens the tree when typing `vim $DIR` or `vim`
 g.nvim_tree_auto_ignore_ft = { 'startify', 'dashboard' } -- empty by default, don't auto open tree on specific filetypes.
 g.nvim_tree_update_cwd = 1 -- will update the tree cwd when changing nvim's directory (DirChanged event). Behaves strangely with autochdir set.
 g.nvim_tree_root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" }
@@ -21,14 +21,14 @@ g.nvim_tree_root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ",
 g.material_style='darker'
 g.material_borders=true
 g.material_hide_eob=true
-require('material').set()
--- vim.g.onedark_style = 'darker'
--- require('onedark').setup()
+-- require('material').set()
+vim.g.onedark_style = 'darker'
+require('onedark').setup()
 
 -- Lualine Config
 require('lualine').setup {
 	options = {
-		theme = 'codedark'
+		theme = 'onedark'
 	},
   tabline = {
     lualine_a = {},

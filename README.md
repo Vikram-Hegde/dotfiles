@@ -27,6 +27,4 @@ config/nvim
 ## ToDo
 
 - [  ] Create a one line installer script
-- [ x ] Switch from coc.vim to coc.lua
-- [ x ] Switch from floaterm to [toggleterm](https://github.com/akinsho/toggleterm.nvim)
-- [ x ] Add and configure gitsigns
+- [  ] Install a formatter
