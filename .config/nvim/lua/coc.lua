@@ -42,25 +42,25 @@ U.map('i', '<CR>', 'pumvisible() ? coc#_select_confirm() : "<C-G>u<CR><C-R>=coc#
 
 -- Use `[g` and `]g` to navigate diagnostics
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-U.map('n', '[g', '<Plug>(coc-diagnostic-prev)', { noremap = false })
-U.map('n', ']g', '<Plug>(coc-diagnostic-next)', { noremap = false })
+U.map('n', '[g', '<Plug>(coc-diagnostic-prev)')
+U.map('n', ']g', '<Plug>(coc-diagnostic-next)')
 
 -- Multiple Cursors support
-U.map('n', 'gb', '<Plug>(coc-cursors-word)', { noremap = false })
+U.map('n', 'gb', '<Plug>(coc-cursors-word)')
 
 -- GoTo code navigation.
-U.map('n', 'gd', '<Plug>(coc-definition)', { noremap = false })
-U.map('n', 'gy', '<Plug>(coc-type-definition)', { noremap = false })
-U.map('n', 'gi', '<Plug>(coc-implementation)', { noremap = false })
-U.map('n', 'gr', '<Plug>(coc-references)', { noremap = false })
+U.map('n', 'gd', '<Plug>(coc-definition)')
+U.map('n', 'gy', '<Plug>(coc-type-definition)')
+U.map('n', 'gi', '<Plug>(coc-implementation)')
+U.map('n', 'gr', '<Plug>(coc-references)')
 
 -- Symbol renaming.
-U.map('n', '<leader>rn', '<Plug>(coc-rename)', { noremap = false })
+U.map('n', '<leader>rn', '<Plug>(coc-rename)')
 
 -- Remap keys for applying codeAction to the current buffer.
-U.map('n', '<leader>sc', '<Plug>(coc-codeaction)', { noremap = false })
+U.map('n', '<leader>sc', '<Plug>(coc-codeaction)')
 
-U.map('n', '<leader>sf', '<Plug>(coc-fix-current)', {noremap = false})
+U.map('n', '<leader>sf', '<Plug>(coc-fix-current)')
 
 -- Map function and class text objects
 -- NOTE: Requires 'textDocument.documentSymbol' support from the language server.

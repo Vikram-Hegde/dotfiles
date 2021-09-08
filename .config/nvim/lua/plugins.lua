@@ -24,7 +24,6 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
 	-- Looks
-	use 'marko-cerovac/material.nvim'
 	use 'navarasu/onedark.nvim'
 	use 'glepnir/dashboard-nvim'
 	use {
@@ -46,8 +45,8 @@ return require('packer').startup(function()
 
 	-- Handy Utils
 	use 'Pocco81/AutoSave.nvim'
-	use 'jiangmiao/auto-pairs'
 	use 'tpope/vim-surround'
+	use 'windwp/nvim-autopairs'
 	use 'tpope/vim-commentary'
 	use 'akinsho/toggleterm.nvim'
 	use 'norcalli/nvim-colorizer.lua'
@@ -67,4 +66,5 @@ return require('packer').startup(function()
 	use { 'neoclide/coc.nvim', branch = 'release' }
 	use {'iamcco/markdown-preview.nvim', run = 'cd app && npm install', cmd = 'MarkdownPreview', ft = { 'markdown' }}
 	use 'sheerun/vim-polyglot'
+	use 'lukas-reineke/format.nvim'
 end)

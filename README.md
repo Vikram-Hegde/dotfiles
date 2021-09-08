@@ -27,4 +27,4 @@ config/nvim
 ## ToDo
 
 - [  ] Create a one line installer script
-- [  ] Install a formatter
+- [ x ] Install a formatter

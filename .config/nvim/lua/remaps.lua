@@ -61,6 +61,9 @@ U.map('n', '<leader>lc', ':e ~/.config/nvim/init.lua<CR>')
 -- Source Lua file
 U.map('n', '<leader>ls', ':luafile %<CR>')
 
+-- Format File
+U.map('n', '<leader>p', ':Format<CR>')
+
 -- Switch material themes easily
 U.map('n', '<leader>mm', '[[<Cmd>lua require("material.functions").toggle_style()<CR>]]')
 

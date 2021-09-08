@@ -17,5 +17,7 @@
 		"scss"
 	],
 	"javascript.autoClosingTags": true,
-	"snippets.ultisnips.usePythonx": false
+	"snippets.ultisnips.usePythonx": false,
+	"diagnostic.virtualText": true,
+	"diagnostic.virtualTextCurrentLineOnly": false
 }

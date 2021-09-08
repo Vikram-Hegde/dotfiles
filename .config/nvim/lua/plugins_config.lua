@@ -17,33 +17,6 @@ g.nvim_tree_auto_ignore_ft = { 'startify', 'dashboard' } -- empty by default, do
 g.nvim_tree_update_cwd = 1 -- will update the tree cwd when changing nvim's directory (DirChanged event). Behaves strangely with autochdir set.
 g.nvim_tree_root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" }
 
--- Color Scheme
--- g.material_style='darker'
--- require('material').setup({
---   contrast = true,
---   borders = false,
---   italics = {
---     comments = false,
---     strings = false,
---     keywords = false,
---     functions = false,
---     variables = false
---   },
---   contrast_windows = {
---     "terminal",
---     "packer",
---     "qf"
---   },
---   text_contrast = {
---     lighter = false,
---     darker = true
---   },
---   disable = {
---     background = false,
---     term_colors = false,
---     eob_lines = true
---   }
--- })
 
 vim.g.onedark_style = 'darker'
 require('onedark').setup()
@@ -94,7 +67,7 @@ require('telescope').setup {
 require('autosave').setup(
   {
     enabled = true,
-    execution_message = "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"),
+    execution_message = "Saved",
     events = {"InsertLeave", "TextChanged"},
     conditions = {
         exists = true,
@@ -149,3 +122,40 @@ cmd 'autocmd FileType markdown nnoremap <buffer> <leader>c :MarkdownPreviewToggl
 
 -- Colorizer Config
 require('colorizer').setup()
+
+-- AutoPairs Config
+require('nvim-autopairs').setup{}
+
+-- Format Config
+require "format".setup {
+    ["*"] = {
+        {cmd = {"sed -i 's/[ \t]*$//'"}} -- remove trailing whitespace
+    },
+    lua = {
+        {
+            cmd = {
+                function(file)
+                    return string.format("luafmt -l %s -w replace %s", vim.bo.textwidth, file)
+                end
+            }
+        }
+    },
+    javascript = {
+        {cmd = {"prettier -w", "./node_modules/.bin/eslint --fix"}}
+    },
+    html = {
+        {cmd = {"prettier -w"}}
+    },
+    markdown = {
+        {cmd = {"prettier -w"}}
+    },
+    cpp = {
+      { cmd = {"clang-format %"}}
+    },
+    c = {
+      { cmd = {"clang-format %"}}
+    },
+    scss = {
+      { cmd = {"prettier -w"}}
+    }
+}
