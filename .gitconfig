@@ -5,3 +5,5 @@ name = Vikram-Hegde
 email = vikramhegde1440@gmail.com
 [credential]
 	helper = store
+[init]
+	defaultBranch = main

@@ -18,11 +18,13 @@ cmd [[ autocmd TextYankPost * lua vim.highlight.on_yank {on_visual = false} ]]
 cmd [[ autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> set showtabline=2 ]]
 
 -- Removing the annoying comments added next line
--- For some reason adding this in a .vim file works but not here. might be some conflict
 cmd [[ autocmd BufNewFile,BufRead,BufEnter,BufWinEnter,WinEnter * set formatoptions-=cro ]]
 
 -- Remove Statusline when in NvimTree
 cmd [[ autocmd BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif ]]
+
+-- Remove tilde
+-- TODO: Find a method to achieve this.
 
 -- Mapping leader to <Space>
 g.mapleader=' '
