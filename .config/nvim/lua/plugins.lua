@@ -25,12 +25,11 @@ return require('packer').startup(function()
 
 	-- Looks
 	use 'navarasu/onedark.nvim'
-	use 'glepnir/dashboard-nvim'
+	use "Pocco81/Catppuccino.nvim"
 	use {
-		'kyazdani42/nvim-tree.lua',
-		requires = 'kyazdani42/nvim-web-devicons'
-	}
-	use 'hoob3rt/lualine.nvim'
+	'hoob3rt/lualine.nvim',
+	requires = 'kyazdani42/nvim-web-devicons'
+}
 	use {
 		'kdheepak/tabline.nvim',
 		config = function()
@@ -39,19 +38,22 @@ return require('packer').startup(function()
 	}
 
 	-- Telescope
-	use 'nvim-lua/plenary.nvim'
-	use 'nvim-lua/popup.nvim'
-	use 'nvim-telescope/telescope.nvim'
+	use {
+			'nvim-telescope/telescope.nvim',
+			requires = {
+				'nvim-lua/plenary.nvim',
+				'nvim-lua/popup.nvim'
+	  }
+  }
 
 	-- Handy Utils
-	use 'Pocco81/AutoSave.nvim'
-	use 'tpope/vim-surround'
-	use 'windwp/nvim-autopairs'
+	use {'Pocco81/AutoSave.nvim', event = 'InsertLeave'}
+	use {'tpope/vim-surround'}
+	use { 'windwp/nvim-autopairs' }
 	use 'tpope/vim-commentary'
 	use 'akinsho/toggleterm.nvim'
 	use 'norcalli/nvim-colorizer.lua'
 	use { 'gregsexton/MatchTag', ft = {'html'} }
-	use 'ThePrimeagen/vim-be-good' -- Game
 	use {
 		'lewis6991/gitsigns.nvim',
 		requires = {

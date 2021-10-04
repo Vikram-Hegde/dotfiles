@@ -38,6 +38,7 @@ o.ignorecase=true
 o.shiftwidth=2
 o.tabstop=2
 o.smartindent=true
+o.smarttab=true
 o.hlsearch=false
 o.relativenumber=true
 o.number=true

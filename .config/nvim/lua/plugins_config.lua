@@ -18,13 +18,73 @@ g.nvim_tree_update_cwd = 1 -- will update the tree cwd when changing nvim's dire
 g.nvim_tree_root_folder_modifier = table.concat { ":t:gs?$?/..", string.rep(" ", 1000), "?:gs?^??" }
 
 
-vim.g.onedark_style = 'darker'
-require('onedark').setup()
+-- vim.g.onedark_style = 'darker'
+-- require('onedark').setup()
+
+local catppuccino = require("catppuccino")
+
+-- configure it
+catppuccino.setup(
+    {
+		colorscheme = "soft_manilo",
+		term_colors = true,
+		styles = {
+			comments = "italic",
+			functions = "italic",
+			keywords = "italic",
+			strings = "NONE",
+			variables = "NONE",
+		},
+		integrations = {
+			treesitter = false,
+			native_lsp = {
+				enabled = false,
+				virtual_text = {
+					errors = "italic",
+					hints = "italic",
+					warnings = "italic",
+					information = "italic",
+				},
+				underlines = {
+					errors = "underline",
+					hints = "underline",
+					warnings = "underline",
+					information = "underline",
+				}
+			},
+			lsp_trouble = false,
+			lsp_saga = false,
+			gitgutter = false,
+			gitsigns = false,
+			telescope = true,
+			nvimtree = {
+				enabled = true,
+				show_root = true,
+			},
+			which_key = false,
+			indent_blankline = {
+				enabled = false,
+				colored_indent_levels = false,
+			},
+			dashboard = false,
+			neogit = false,
+			vim_sneak = false,
+			fern = false,
+			barbar = false,
+			bufferline = false,
+			markdown = false,
+			lightspeed = false,
+			ts_rainbow = false,
+			hop = false,
+		}
+	}
+)
+vim.cmd[[colorscheme catppuccino]]
 
 -- Lualine Config
 require('lualine').setup {
 	options = {
-		theme = 'onedark'
+		theme = 'catppuccino'
 	},
   tabline = {
     lualine_a = {},
@@ -122,6 +182,11 @@ cmd 'autocmd FileType markdown nnoremap <buffer> <leader>c :MarkdownPreviewToggl
 
 -- Colorizer Config
 require('colorizer').setup()
+
+-- NetRW config
+g.netrw_liststyle = 3
+g.netrw_banner = 0
+g.netrw_winsize = 20
 
 -- AutoPairs Config
 require('nvim-autopairs').setup{}

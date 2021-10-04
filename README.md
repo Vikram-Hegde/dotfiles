@@ -8,7 +8,7 @@
 
 ## Neovim 
 
-![Screenshot](screenshot.png "Neovim Looks")
+![Screenshot](screenshot.png "Neovim Customization")
 
 ### Folder Structure for Neovim Configuration
 ```

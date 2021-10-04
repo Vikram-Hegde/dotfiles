@@ -48,12 +48,8 @@ U.map('n', '<C-j>', ':wincmd j<CR>')
 U.map('n', '<C-k>', ':wincmd k<CR>')
 U.map('n', '<C-l>', ':wincmd l<CR>')
 
--- NVIM TREE toggle
-U.map('n', '<leader>e', ':NvimTreeToggle<CR>')
-U.map('n', '<leader>fs', ':NvimTreeFindFile<CR>')
-
--- GoTo Dashboard
-U.map('n', '<leader>db', '<cmd>Dashboard<CR>')
+-- File Explorer
+U.map('n', '<leader>e','<cmd>Lexplore<CR>')
 
 -- GoTo Config File
 U.map('n', '<leader>lc', ':e ~/.config/nvim/init.lua<CR>')
@@ -78,4 +74,4 @@ U.map('n', '<leader>tt', '<cmd>ToggleTerm<CR>') -- Default Layout
 U.map('n', '<leader>tv', '<cmd>2ToggleTerm size=50 direction=vertical<CR>') -- Vertical Layout
 
 -- Convert all px to rem
-cmd [[ autocmd Filetype scss nnoremap <leader>rem :%s#\(\d\+\)px#\=printf("%.2f", (submatch(1) / 16.0))."rem"#g<CR> ]]
+cmd [[ autocmd Filetype scss,css,sass nnoremap <leader>rem :%s#\(\d\+\)px#\=printf("%.2f", (submatch(1) / 16.0))."rem"#g<CR> ]]
