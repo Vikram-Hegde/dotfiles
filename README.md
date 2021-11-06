@@ -8,7 +8,11 @@
 
 ## Neovim 
 
-![Screenshot](screenshot.png "Neovim Customization")
+### Web Dev
+![Screenshot](web_dev_sc.png "Neovim for web dev")
+
+### C / C++
+![Screenshot](cAndC++_sc.png "Neovim for c/c++ with output")
 
 ### Folder Structure for Neovim Configuration
 ```
@@ -16,16 +20,30 @@ config/nvim
 ├── coc-settings.json
 ├── init.lua
 ├── lua
-│   ├── coc.lua
-│   ├── plugins_config.lua
+│   ├── disabled.lua
+│   ├── plugin_config
+│   │   ├── autosave.lua
+│   │   ├── blankline.lua
+│   │   ├── bufferline.lua
+│   │   ├── coc-lua.lua
+│   │   ├── formatconfig.lua
+│   │   ├── gps.lua
+│   │   ├── lualine.lua
+│   │   ├── telescope.lua
+│   │   ├── toggleterm.lua
+│   │   └── treesitter.lua
 │   ├── plugins.lua
 │   ├── remaps.lua
 │   ├── settings.lua
 │   └── utils.lua
+├── plugin
+│   ├── coc.vim
+│   └── packer_compiled.lua
+└── powerlinesymbols.txt
 ```
 
 ## ToDo
 
 - [  ] Create a one line installer script
 - [ x ] Install a formatter (Installed format.nvim)
-- Try configuring LSP with compe (again)
+- [  ] Try configuring LSP with compe (again)
