@@ -1,15 +1,6 @@
---[[
-    _       _ __    __
-   (_)___  (_) /_  / /_  ______ _
-  / / __ \/ / __/ / / / / / __ `/
- / / / / / / /__ / / /_/ / /_/ /
-/_/_/ /_/_/\__(_)_/\__,_/\__,_/
-
---]]
-require('plugins')
-require('plugins_config')
-require('coc')
-
+vim.opt.shadafile = 'NONE'
+require('disabled')
 require('settings')
-
 require('remaps')
+require('plugins')
+vim.opt.shadafile = ''

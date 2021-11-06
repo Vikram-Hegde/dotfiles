@@ -16,6 +16,6 @@
 		"javascriptreact",
 		"scss"
 	],
-	"javascript.autoClosingTags": true,
-	"snippets.ultisnips.usePythonx": false
+  "javascript.autoClosingTags": true,
+	"eslint.autoFixOnSave": true
 }

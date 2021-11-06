@@ -1,72 +1,165 @@
---[[
-           __            _
-    ____  / /_  ______ _(_)___  _____
-   / __ \/ / / / / __ `/ / __ \/ ___/
-  / /_/ / / /_/ / /_/ / / / / (__  )
- / .___/_/\__,_/\__, /_/_/ /_/____/
-/_/            /____/
-
---]]
-local execute = vim.api.nvim_command
 local fn = vim.fn
-
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-
 if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
-  execute 'packadd packer.nvim'
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
-vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
 
-return require('packer').startup(function()
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+local theme = 'onedark.nvim'
 
-	-- Looks
-	use 'navarasu/onedark.nvim'
-	use "Pocco81/Catppuccino.nvim"
+return require('packer').startup(function(use)
+  -- Plugin List
+  use { 'wbthomason/packer.nvim' }
+
 	use {
-	'hoob3rt/lualine.nvim',
-	requires = 'kyazdani42/nvim-web-devicons'
-}
-	use {
-		'kdheepak/tabline.nvim',
-		config = function()
-			require'tabline'.setup {enable = false}
-		end
+		'neoclide/coc.nvim',
+		branch = 'release',
+		event = 'BufWinEnter'
 	}
 
-	-- Telescope
+	-- Themes
 	use {
-			'nvim-telescope/telescope.nvim',
-			requires = {
-				'nvim-lua/plenary.nvim',
-				'nvim-lua/popup.nvim'
-	  }
-  }
+		'navarasu/onedark.nvim',
+		event = 'UIEnter',
+		config = function() vim.g.onedark_style = 'darker' vim.cmd[[ colorscheme onedark ]] end
+	}
+
+	-- use {
+	-- 	'sainnhe/everforest',
+	-- 	event = 'VimEnter',
+	-- 	config = function ()
+	-- 		// TODO
+	-- 	end
+	-- }
+
+	-- use {
+	-- 	'projekt0n/github-nvim-theme',
+	-- 	event = 'VimEnter',
+	-- 	config = function ()
+	-- 		//	TODO
+	-- 	end
+	-- }
+
+	-- use {
+	-- 	'Pocco81/Catppuccino.nvim',
+	-- 	event = 'VimEnter',
+	-- 	config = function ()
+	-- 		// TODO
+	-- 	end
+	-- }
 
 	-- Handy Utils
-	use {'Pocco81/AutoSave.nvim', event = 'InsertLeave'}
-	use {'tpope/vim-surround'}
-	use { 'windwp/nvim-autopairs' }
-	use 'tpope/vim-commentary'
-	use 'akinsho/toggleterm.nvim'
-	use 'norcalli/nvim-colorizer.lua'
-	use { 'gregsexton/MatchTag', ft = {'html'} }
+
 	use {
-		'lewis6991/gitsigns.nvim',
-		requires = {
-			'nvim-lua/plenary.nvim'
-		},
+			'numToStr/Comment.nvim',
+			after = theme,
+			config = function()
+					require'Comment'.setup()
+			end
+	}
+
+	-- use {
+	-- 	'lewis6991/gitsigns.nvim',
+	-- 	requires = {
+	-- 		'nvim-lua/plenary.nvim'
+	-- 	},
+	-- 	tag = 'release', -- To use the latest release
+	-- 	event = 'InsertEnter',
+	-- 	config = function()
+	-- 		require'gitsigns'.setup()
+	-- 	end
+	-- }
+	--
+	use {
+		'norcalli/nvim-colorizer.lua',
+		after = theme,
+		ft = {'html', 'css', 'js', 'sass', 'scss'},
+		cmd = 'ColorizerToggle',
+		config = function() require'colorizer'.setup{} end
+	}
+
+	use { 'Pocco81/AutoSave.nvim',
+		event = {'BufWritePost', 'InsertLeave'},
+		config = function() require'plugin_config.autosave' end
+	}
+
+	use { 'jiangmiao/auto-pairs', event = 'BufWinEnter' }
+
+	use {
+		'lukas-reineke/format.nvim',
+		cmd = 'Format',
+		event = 'BufWrite',
+		config = function () require'plugin_config.formatconfig' end,
+	}
+
+	use {
+		'blackCauldron7/surround.nvim',
+		event = 'InsertEnter',
 		config = function()
-			require('gitsigns').setup()
+				-- sandwich replaces substitue command (s) in case
+				-- needed change to surround
+			require'surround'.setup {mappings_style = 'sandwich'}
 		end
 	}
 
-	-- Language Support
-	use { 'neoclide/coc.nvim', branch = 'release' }
-	use {'iamcco/markdown-preview.nvim', run = 'cd app && npm install', cmd = 'MarkdownPreview', ft = { 'markdown' }}
-	use 'sheerun/vim-polyglot'
-	use 'lukas-reineke/format.nvim'
+	use {
+		'akinsho/toggleterm.nvim',
+		event = 'BufWinEnter',
+		config = function()
+			require'plugin_config.toggleterm'
+		end
+	}
+
+	use {
+		'nvim-telescope/telescope.nvim',
+		requires = 'nvim-lua/plenary.nvim' ,
+		event = 'BufWinEnter',
+		config = function() require'plugin_config.telescope' end
+	}
+
+	-- Extra stuffs (not important)
+	use {
+			'nvim-treesitter/nvim-treesitter',
+			run = ':TSUpdate',
+			after = theme,
+			config = function () require'plugin_config.treesitter' end
+	}
+
+	use {
+		"SmiteshP/nvim-gps",
+		after = 'nvim-treesitter',
+		requires = "nvim-treesitter/nvim-treesitter",
+		config = function ()
+			require'plugin_config.gps'
+		end
+	}
+
+	use {
+		'kyazdani42/nvim-web-devicons',
+		after = theme,
+	}
+
+	use {
+		'nvim-lualine/lualine.nvim',
+		after = 'nvim-gps',
+		config = function() require'plugin_config.lualine' end
+	}
+
+	use {
+		'akinsho/bufferline.nvim',
+		after = 'nvim-web-devicons',
+		config = function() require'plugin_config.bufferline' end
+	}
+
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if packer_bootstrap then
+    require'packer'.sync()
+  end
 end)

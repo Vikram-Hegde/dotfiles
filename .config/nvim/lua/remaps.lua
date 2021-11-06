@@ -38,8 +38,8 @@ U.map('n', '<leader>dd', ':lcd %:p:h<CR>')
 U.map('n', '<leader>du', ':cd ..<CR>')
 
 -- Switch between buffers easily
-U.map('n', '<tab>', ':bnext<CR>')
-U.map('n', '<s-tab>', ':bprevious<CR>')
+U.map('n', '<tab>', '<CMD>BufferLineCycleNext<CR>')
+U.map('n', '<s-tab>', '<CMD>BufferLineCyclePrev<CR>')
 U.map('n', '<leader>q', ':bd<CR>')
 
 -- Move between spilt windows
@@ -49,7 +49,7 @@ U.map('n', '<C-k>', ':wincmd k<CR>')
 U.map('n', '<C-l>', ':wincmd l<CR>')
 
 -- File Explorer
-U.map('n', '<leader>e','<cmd>Lexplore<CR>')
+U.map('n', '<leader>e',':CocCommand explore<CR>')
 
 -- GoTo Config File
 U.map('n', '<leader>lc', ':e ~/.config/nvim/init.lua<CR>')
@@ -61,7 +61,7 @@ U.map('n', '<leader>ls', ':luafile %<CR>')
 U.map('n', '<leader>p', ':Format<CR>')
 
 -- Switch material themes easily
-U.map('n', '<leader>mm', '[[<Cmd>lua require("material.functions").toggle_style()<CR>]]')
+-- U.map('n', '<leader>mm', '[[<Cmd>lua require("material.functions").toggle_style()<CR>]]')
 
 -- Telescope
 U.map('n', '<leader>o', '<cmd>Telescope find_files<CR>')

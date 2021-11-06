@@ -1,12 +1,3 @@
---[[
-              __  __  _
-   ________  / /_/ /_(_)___  ____ ______
-  / ___/ _ \/ __/ __/ / __ \/ __ `/ ___/
- (__  )  __/ /_/ /_/ / / / / /_/ (__  )
-/____/\___/\__/\__/_/_/ /_/\__, /____/
-                          /____/
-
---]]
 local cmd = vim.cmd
 local g = vim.g      -- a table to access global variables
 local o = vim.opt  -- to set options
@@ -20,11 +11,8 @@ cmd [[ autocmd FileType dashboard set showtabline=0 | autocmd WinLeave <buffer> 
 -- Removing the annoying comments added next line
 cmd [[ autocmd BufNewFile,BufRead,BufEnter,BufWinEnter,WinEnter * set formatoptions-=cro ]]
 
--- Remove Statusline when in NvimTree
-cmd [[ autocmd BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == "NvimTree" | set laststatus=0 | else | set laststatus=2 | endif ]]
-
--- Remove tilde
--- TODO: Find a method to achieve this.
+-- Remove Statusline when in File Tree
+cmd [[ autocmd BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == 'coc-explorer' | set laststatus=0 | else | set laststatus=2 | endif ]]
 
 -- Mapping leader to <Space>
 g.mapleader=' '
