@@ -135,9 +135,14 @@ return require('packer').startup(function(use)
 		"SmiteshP/nvim-gps",
 		after = 'nvim-treesitter',
 		requires = "nvim-treesitter/nvim-treesitter",
-		config = function ()
-			require'plugin_config.gps'
-		end
+		config = function() require'plugin_config.gps' end
+	}
+
+	use {
+		'abecodes/tabout.nvim',
+		config = function() require'plugin_config.tabout' end,
+		wants = 'nvim-treesitter',
+		event = 'InsertEnter'
 	}
 
 	use {

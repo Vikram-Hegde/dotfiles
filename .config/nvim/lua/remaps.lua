@@ -75,3 +75,6 @@ U.map('n', '<leader>tv', '<cmd>2ToggleTerm size=50 direction=vertical<CR>') -- V
 
 -- Convert all px to rem
 cmd [[ autocmd Filetype scss,css,sass nnoremap <leader>rem :%s#\(\d\+\)px#\=printf("%.2f", (submatch(1) / 16.0))."rem"#g<CR> ]]
+
+-- Comment easily end of line, requires numToStr/Comment.nvim
+U.map('n', ';;', 'gcA', { noremap = false })

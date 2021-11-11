@@ -9,10 +9,10 @@
 ## Neovim 
 
 ### Web Dev
-![Screenshot](web_dev_sc.png "Neovim for web dev")
+![Web Development Screenshot](web_dev_sc.png "Neovim for web dev")
 
 ### C / C++
-![Screenshot](cAndC++_sc.png "Neovim for c/c++ with output")
+![C/C++ development Screenshot](cAndC++_sc.png "Neovim for c/c++ with output")
 
 ### Folder Structure for Neovim Configuration
 ```
