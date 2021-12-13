@@ -11,7 +11,7 @@ vim.cmd([[
   augroup end
 ]])
 
-local theme = 'onedark.nvim'
+local theme = 'github-nvim-theme'
 
 return require('packer').startup(function(use)
   -- Plugin List
@@ -27,7 +27,14 @@ return require('packer').startup(function(use)
 	use {
 		'navarasu/onedark.nvim',
 		event = 'UIEnter',
-		config = function() vim.g.onedark_style = 'darker' vim.cmd[[ colorscheme onedark ]] end
+		-- config = function() vim.g.onedark_style = 'darker' vim.cmd[[ colorscheme onedark ]] end
+	}
+
+
+	use {
+		"projekt0n/github-nvim-theme",
+		event = 'UIEnter',
+		config = function() require('github-theme').setup() end,
 	}
 
 	-- use {
