@@ -30,7 +30,6 @@ return require('packer').startup(function(use)
 		-- config = function() vim.g.onedark_style = 'darker' vim.cmd[[ colorscheme onedark ]] end
 	}
 
-
 	use {
 		"projekt0n/github-nvim-theme",
 		event = 'UIEnter',
@@ -42,14 +41,6 @@ return require('packer').startup(function(use)
 	-- 	event = 'VimEnter',
 	-- 	config = function ()
 	-- 		// TODO
-	-- 	end
-	-- }
-
-	-- use {
-	-- 	'projekt0n/github-nvim-theme',
-	-- 	event = 'VimEnter',
-	-- 	config = function ()
-	-- 		//	TODO
 	-- 	end
 	-- }
 
