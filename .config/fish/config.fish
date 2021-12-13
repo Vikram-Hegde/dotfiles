@@ -14,3 +14,5 @@ function !!;
         eval $var
   end
 end
+
+set -gx LS_COLORS ':ow=01;33'
