@@ -17,9 +17,6 @@ U.map('n', '<Space>', '<NOP>')
 -- Easier to reach 0 than ^
 U.map('n', '0', '^')
 
--- Makes sense to do this one. like C and D.
-U.map('n', 'Y', 'y$')
-
 -- Cursor in center while <C-d> and <C-u>
 U.map('n', '<C-d>', '<C-d>zz')
 U.map('n', '<C-u>', '<C-u>zz')
@@ -75,6 +72,3 @@ U.map('n', '<leader>tv', '<cmd>2ToggleTerm size=50 direction=vertical<CR>') -- V
 
 -- Convert all px to rem
 cmd [[ autocmd Filetype scss,css,sass nnoremap <leader>rem :%s#\(\d\+\)px#\=printf("%.2f", (submatch(1) / 16.0))."rem"#g<CR> ]]
-
--- Comment easily end of line, requires numToStr/Comment.nvim
-U.map('n', ';;', 'gcA', { noremap = false })

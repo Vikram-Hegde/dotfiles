@@ -1,7 +1,7 @@
 #!/bin/bash
 
 read -p "Enter Code editor: " editor
-read -p "Enter file name: " fileName
+read -p "Enter folder name: " folderName
 
 openEditor() {
     echo "Off you go 🚀"
@@ -16,7 +16,7 @@ openEditor() {
 
 if [ $editor == "code" ] || [ $editor == "vim" ] || [ $editor == "nvim" ]
 then
-    openEditor "$editor" "$fileName"
+    openEditor "$editor" "$folderName/index.html"
 else
     echo -e "\nEditor not available 😕. Try code or (n)vim"
 fi

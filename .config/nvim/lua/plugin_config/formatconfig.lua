@@ -46,9 +46,9 @@ require("formatter").setup(
 				function()
 					return {
 						exe = "clang-format",
-						args = {"--assume-filename", vim.api.nvim_buf_get_name(0)},
+						args = {"--assume-filename","-i", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
 						stdin = true,
-						cwd = vim.fn.expand("%:p:h") -- Run clang-format in cwd of the file.
+						-- cwd = vim.fn.expand("%:p:h") -- Run clang-format in cwd of the file.
 					}
 				end
 			},
@@ -57,7 +57,7 @@ require("formatter").setup(
 				function()
 					return {
 						exe = "clang-format",
-						args = {"--assume-filename", vim.api.nvim_buf_get_name(0)},
+						args = {"--assume-filename","-i", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
 						stdin = true,
 						cwd = vim.fn.expand("%:p:h") -- Run clang-format in cwd of the file.
 					}

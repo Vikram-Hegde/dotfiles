@@ -38,10 +38,12 @@ return require("packer").startup(
 			"projekt0n/github-nvim-theme",
 			event = "UIEnter",
 			config = function()
-				require("github-theme").setup({
-					transparent = 'false',
-					theme_style = 'dark'
-				})
+				require("github-theme").setup(
+					{
+						transparent = "false",
+						theme_style = "dark_default"
+					}
+				)
 			end
 		}
 
@@ -82,7 +84,7 @@ return require("packer").startup(
 		-- 		require'gitsigns'.setup()
 		-- 	end
 		-- }
-		--
+
 		use {
 			"norcalli/nvim-colorizer.lua",
 			after = theme,
@@ -95,7 +97,6 @@ return require("packer").startup(
 
 		use {
 			"Pocco81/AutoSave.nvim",
-			event = {"BufWritePost"},
 			config = function()
 				require "plugin_config.autosave"
 			end
