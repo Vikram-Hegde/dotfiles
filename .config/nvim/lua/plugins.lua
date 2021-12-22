@@ -151,15 +151,6 @@ return require("packer").startup(
 		}
 
 		use {
-			"SmiteshP/nvim-gps",
-			after = "nvim-treesitter",
-			requires = "nvim-treesitter/nvim-treesitter",
-			config = function()
-				require "plugin_config.gps"
-			end
-		}
-
-		use {
 			"abecodes/tabout.nvim",
 			config = function()
 				require "plugin_config.tabout"
@@ -175,7 +166,7 @@ return require("packer").startup(
 
 		use {
 			"nvim-lualine/lualine.nvim",
-			after = "nvim-gps",
+			after = "nvim-web-devicons",
 			config = function()
 				require "plugin_config.lualine"
 			end
