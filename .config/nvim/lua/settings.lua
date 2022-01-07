@@ -17,6 +17,8 @@ cmd [[ autocmd BufEnter,BufWinEnter,WinEnter,CmdwinEnter * if bufname('%') == 'c
 -- Mapping leader to <Space>
 g.mapleader=' '
 
+o.splitbelow=true
+o.splitright=true
 o.updatetime=200
 o.termguicolors=true
 o.numberwidth=5

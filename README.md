@@ -45,5 +45,4 @@ config/nvim
 ## ToDo
 
 - [  ] Create a one line installer script
-- [ x ] Install a formatter (Installed format.nvim)
 - [  ] Try configuring LSP with compe (again)

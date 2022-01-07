@@ -70,6 +70,7 @@ $utilities: (
 	@if $type == spacing {
 		$name: "sp";
 	}
+	// optional
 	@if $type == code {
 		$name: "cc";
 	}
