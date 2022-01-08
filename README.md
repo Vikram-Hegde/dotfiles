@@ -23,12 +23,10 @@ config/nvim
 │   ├── disabled.lua
 │   ├── plugin_config
 │   │   ├── autosave.lua
-│   │   ├── blankline.lua
 │   │   ├── bufferline.lua
-│   │   ├── coc-lua.lua
 │   │   ├── formatconfig.lua
-│   │   ├── gps.lua
 │   │   ├── lualine.lua
+│   │   ├── tabout.lua
 │   │   ├── telescope.lua
 │   │   ├── toggleterm.lua
 │   │   └── treesitter.lua
@@ -45,4 +43,4 @@ config/nvim
 ## ToDo
 
 - [  ] Create a one line installer script
-- [  ] Try configuring LSP with compe (again)
+- [  ] Switch to LSP from ConquerorOfCode
