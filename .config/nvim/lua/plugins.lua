@@ -1,4 +1,5 @@
 local fn = vim.fn
+local packer_bootstrap
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
 	packer_bootstrap =
@@ -24,29 +25,39 @@ return require("packer").startup(
 		use {
 			"neoclide/coc.nvim",
 			branch = "release",
-			event = "BufWinEnter"
+			event = "BufWinEnter",
+			after = theme
 		}
 
 		-- Themes
-		use {
-			"navarasu/onedark.nvim",
-			event = "UIEnter"
-			-- config = function() vim.g.onedark_style = 'darker' vim.cmd[[ colorscheme onedark ]] end
-		}
 
+		-- use {
+		-- 	"navarasu/onedark.nvim",
+		-- 	event = "UIEnter",
+		-- 	config = function()
+		-- 		require('onedark').setup {
+		-- 		style = 'darker',
+		-- 		transparent = true
+		-- 	}
+		-- 	 	require('onedark').load()
+		-- 	end
+		-- }
+		--
 		use {
 			"projekt0n/github-nvim-theme",
 			event = "UIEnter",
 			config = function()
 				require("github-theme").setup(
 					{
-						transparent = "false",
-						theme_style = "dark_default"
+						transparent = true,
+						theme_style = "dimmed",
+						hide_end_of_buffer = true,
 					}
 				)
 			end
 		}
 
+		--
 		-- use {
 		-- 	'sainnhe/everforest',
 		-- 	event = 'VimEnter',
@@ -55,15 +66,24 @@ return require("packer").startup(
 		-- 	end
 		-- }
 
-		-- use {
-		-- 	'Pocco81/Catppuccino.nvim',
-		-- 	event = 'VimEnter',
+		-- use({
+		-- 	"catppuccin/nvim",
+		-- 	as = "catppuccin",
 		-- 	config = function ()
-		-- 		// TODO
+		-- 		require('catppuccin').setup {
+ 	--  	 	 	 	transparent_background = false,
+		-- 			term_colors = false
+		-- 		}
+		-- 	vim.cmd[[colorscheme catppuccin]]
 		-- 	end
-		-- }
+		-- })
+		--
 
 		-- Handy Utils
+
+		use {
+			'tidalcycles/vim-tidal'
+		}
 
 		use {
 			"numToStr/Comment.nvim",

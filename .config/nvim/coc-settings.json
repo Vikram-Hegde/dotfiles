@@ -1,15 +1,10 @@
 {
-	"html.autoClosingTags": true,
 	"scss.lint.duplicateProperties": "warning",
 	"emmet.showAbbreviationSuggestions": true,
 	"emmet.includeLanguages": {
-		"javascriptreact": "html"
+		"javascriptreact": "html",
+		"javascript": "html"
 	},
-	"html.filetypes": [
-		"html",
-		"javascript"
-	],
-	"html.format.extraLiners": "section",
 	"html-css-support.enabledLanguages": [
 		"html",
 		"javascript",
@@ -17,6 +12,7 @@
 		"scss"
 	],
   "javascript.autoClosingTags": true,
+	"javascript.preferences.quoteStyle": "single",
 	"eslint.autoFixOnSave": true,
 	"suggest.completionItemKindLabels": {
 			"method": "  ",

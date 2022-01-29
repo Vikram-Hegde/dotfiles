@@ -1,7 +1,9 @@
 local cmd = vim.cmd;
 local api = vim.api;
 
-require("toggleterm").setup {
+local toggleterm = require("toggleterm")
+
+toggleterm.setup {
   -- size can be a number or function which is passed the current terminal
   size = function(term)
     if term.direction == "horizontal" then
@@ -39,3 +41,28 @@ cmd 'autocmd FileType cpp nnoremap <buffer> <leader>c :TermExec cmd="g++ % && ./
 cmd 'autocmd FileType java nnoremap <buffer> <leader>c :TermExec cmd="java %" direction=vertical<CR>'
 cmd 'autocmd FileType html nnoremap <buffer> <leader>c :TermExec cmd="live-server"<CR>'
 cmd 'autocmd FileType scss nnoremap <buffer> <leader>c :2TermExec cmd="compile-sass"<CR>'
+
+local Terminal  = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({
+  cmd = "lazygit",
+  dir = "git_dir",
+  direction = "float",
+  float_opts = {
+    border = "single",
+  },
+	close_on_exit = true,
+  -- function to run on opening the terminal
+  on_open = function(term)
+    vim.cmd("startinsert!")
+    vim.api.nvim_buf_set_keymap(term.bufnr, "n", "q", "<cmd>close<CR>", {noremap = true, silent = true})
+  end,
+  -- function to run on closing the terminal
+  on_close = function(term)
+    vim.cmd("Closing terminal")
+  end,
+})
+function _lazygit_toggle()
+  lazygit:toggle()
+end
+
+vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
