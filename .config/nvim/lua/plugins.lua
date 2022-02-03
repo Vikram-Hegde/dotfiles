@@ -98,8 +98,8 @@ return require("packer").startup(
 		-- 	requires = {
 		-- 		'nvim-lua/plenary.nvim'
 		-- 	},
+		-- 	after = theme,
 		-- 	tag = 'release', -- To use the latest release
-		-- 	event = 'InsertEnter',
 		-- 	config = function()
 		-- 		require'gitsigns'.setup()
 		-- 	end

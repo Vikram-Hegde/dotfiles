@@ -16,3 +16,6 @@ function !!;
 end
 
 set -gx LS_COLORS ':ow=01;33'
+
+# Starship prompt
+starship init fish | source
