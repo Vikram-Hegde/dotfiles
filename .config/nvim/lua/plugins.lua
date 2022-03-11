@@ -82,10 +82,6 @@ return require("packer").startup(
 		-- Handy Utils
 
 		use {
-			'tidalcycles/vim-tidal'
-		}
-
-		use {
 			"numToStr/Comment.nvim",
 			after = theme,
 			config = function()
@@ -139,7 +135,7 @@ return require("packer").startup(
 			config = function()
 				-- sandwich replaces substitue command (s) in case
 				-- needed change to surround
-				require "surround".setup {mappings_style = "sandwich"}
+				require "surround".setup {mappings_style = "surround"}
 			end
 		}
 

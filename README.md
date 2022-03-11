@@ -42,5 +42,5 @@ config/nvim
 
 ## ToDo
 
-- [  ] Create a one line installer script
-- [  ] Switch to LSP from ConquerorOfCode
+- [ ] Create a one line installer script
+- [ ] Switch to LSP from ConquerorOfCode

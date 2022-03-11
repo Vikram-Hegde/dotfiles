@@ -41,6 +41,7 @@ cmd 'autocmd FileType cpp nnoremap <buffer> <leader>c :TermExec cmd="g++ % && ./
 cmd 'autocmd FileType java nnoremap <buffer> <leader>c :TermExec cmd="java %" direction=vertical<CR>'
 cmd 'autocmd FileType html nnoremap <buffer> <leader>c :TermExec cmd="live-server"<CR>'
 cmd 'autocmd FileType scss nnoremap <buffer> <leader>c :2TermExec cmd="compile-sass"<CR>'
+cmd 'autocmd FileType sh nnoremap <buffer> <leader>c :TermExec cmd="./%"<CR>'
 
 local Terminal  = require('toggleterm.terminal').Terminal
 local lazygit = Terminal:new({
