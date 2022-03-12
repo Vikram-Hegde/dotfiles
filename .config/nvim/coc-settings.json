@@ -40,5 +40,6 @@
 			"constructor": "  ",
 			"value": "  ",
 			"enumMember": "  "
-		}
+    },
+    "Lua.telemetry.enable": false
 }

@@ -3,7 +3,7 @@
 # regex pattern to find SCSS file
 file=$(find ./ -type f -name "[a-zA-Z]*\.s[a|c]ss")
 fileCount=$(find ./ -type f -name "[a-zA-Z]*\.s[a|c]ss" | wc -l)
-directory=$(find ./ -type d -name "scss")
+directory=$(find ./ -type d -name "s[c|a]ss")
 
 if [ $fileCount == "1" ]; then
 	if [ ! $directory == "" ]; then
